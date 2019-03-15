@@ -58,7 +58,6 @@ public class CountDownActivity extends BaseActivity {
                 }
             }.start();
         }
-
     }
 
     @Override

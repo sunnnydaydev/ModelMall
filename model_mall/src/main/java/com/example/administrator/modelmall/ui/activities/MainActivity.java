@@ -25,6 +25,11 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void destory() {
+
+    }
+
     private void testNet() {
         String url = "https://www.wanandroid.com/tools/mockapi/7751/mall_mainpage_goods";
         CommonOkHttpClient

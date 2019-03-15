@@ -55,6 +55,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public abstract void onBindView();
 
+    public abstract void destory();
+
     /**
      * view的处理
      * 实现类 传布局资源ID 或者传view
@@ -76,7 +78,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * ButterKnife的解绑
      */
     @Override
-    protected void onDestroy() {
+    public void onDestroy() {
         // 解绑
         if (mBinder != null) {
             mBinder.unbind();
@@ -84,6 +86,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         mConvertView = null; // call gc
         super.onDestroy();
+        destory();
     }
 
     /**

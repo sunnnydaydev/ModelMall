@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ModelMall</string>
     <string name="text_countdown">跳过</string>
+    <string name="start_experience">开始体验</string>
 </resources>

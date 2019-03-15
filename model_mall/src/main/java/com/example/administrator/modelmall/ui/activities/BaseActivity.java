@@ -37,8 +37,9 @@ public abstract class BaseActivity extends AppCompatActivity {
             throw new ClassCastException("view convert fail，check your resource id  be layout resource");
         } else {
             setContentView(mConvertView);
-            onBindView();
             mBinder = ButterKnife.bind(this);
+            onBindView();
+
         }
 
     }

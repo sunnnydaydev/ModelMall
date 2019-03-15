@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activities.GuideActivity">
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <android.support.v7.widget.AppCompatTextView
+        android:background="@drawable/bg_btn_start"
+        android:id="@+id/btn_start"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/start_experience"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp"
+        android:visibility="gone"/>
 
-</android.support.constraint.ConstraintLayout>
+
+
+</RelativeLayout>

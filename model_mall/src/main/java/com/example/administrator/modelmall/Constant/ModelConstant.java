@@ -6,5 +6,5 @@ package com.example.administrator.modelmall.Constant;
  *  全局常量
  */
 public class ModelConstant {
-    public static final String CONFIG = "config";
+    public static final String CONFIG = "config";// SharedPreferences 配置文件名
 }

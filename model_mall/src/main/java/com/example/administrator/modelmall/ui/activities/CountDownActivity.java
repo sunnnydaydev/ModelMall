@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.View;
 
 import com.example.administrator.modelmall.R;
@@ -36,12 +37,10 @@ public class CountDownActivity extends BaseActivity {
     private void initCountDown() {
         // 避免内存泄漏
         if (!isFinishing()) {
-            timer = new CountDownTimer(1000 * 10, 1000) {
+            timer = new CountDownTimer(1000 * 11, 1000) {
                 @SuppressLint("SetTextI18n")
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    countDownText.setEnabled(true);
-                    countDownText.setText((int) millisUntilFinished / 1000 + " 跳过");
                     countDownText.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -49,6 +48,8 @@ public class CountDownActivity extends BaseActivity {
                             finish();
                         }
                     });
+                    int time = (int) millisUntilFinished;
+                    countDownText.setText(time / 1000 + " 跳过");
                 }
 
                 @Override

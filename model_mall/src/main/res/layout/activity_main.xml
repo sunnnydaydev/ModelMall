@@ -6,19 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.activities.MainActivity">
-    <!--<android.support.v4.view.ViewPager-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1"/>-->
-    <TextView
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="@color/red"
-        android:text="这里是viewpager"
-        tools:ignore="HardcodedText" />
+        android:layout_weight="1"/>
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="1"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textColor="@color/red"-->
+        <!--android:text="测试数据"-->
+        <!--tools:ignore="HardcodedText" />-->
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:id="@+id/btn_bottom_navigation"
         android:layout_width="match_parent"

@@ -1,22 +1,35 @@
 package com.example.administrator.modelmall.ui.activities;
 
 
+import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.example.administrator.modelmall.R;
+import com.example.administrator.modelmall.adapter.MainPageAdapter;
+import com.example.administrator.modelmall.base.BasePage;
+import com.example.administrator.modelmall.base.MainPageImpl;
 import com.example.administrator.modelmall.net.CommonOkHttpClient;
 import com.example.administrator.modelmall.net.listener.DisposeDataHandle;
 import com.example.administrator.modelmall.net.listener.DisposeDataListener;
 import com.example.administrator.modelmall.net.request.CommonRequest;
 import com.example.administrator.modelmall.net.response.CommonJsonCallback;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
+
+import static com.ashokvarma.bottomnavigation.BottomNavigationBar.BACKGROUND_STYLE_RIPPLE;
 
 public class MainActivity extends BaseActivity {
     @BindView(R.id.btn_bottom_navigation)
     public BottomNavigationBar buttonBottom;
+    @BindView(R.id.viewpager)
+    public ViewPager viewPager;
+    private List<BasePage> mList;
 
     @Override
     public Object offerLayout() {
@@ -25,15 +38,34 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBindView() {
-
         handleBottomButton();
+        initViewpager();
+    }
+
+    private void initViewpager() {
+        initViewpagerData();
+        viewPager.setAdapter(new MainPageAdapter(mList));
+    }
+
+    private void initViewpagerData() {
+        mList = new ArrayList<>();
+        mList.add(new MainPageImpl(MainActivity.this));
+        mList.add(new MainPageImpl(MainActivity.this));
+        mList.add(new MainPageImpl(MainActivity.this));
+        mList.add(new MainPageImpl(MainActivity.this));
+        mList.add(new MainPageImpl(MainActivity.this));
     }
 
     /**
      * 底部导航处理
      */
     private void handleBottomButton() {
-        buttonBottom.addItem(new BottomNavigationItem(R.drawable.zhuye, "主页"))
+        buttonBottom
+                .setBackgroundStyle(BACKGROUND_STYLE_RIPPLE)  // 点击样式
+                .setBarBackgroundColor(R.color.orange) // 字体 、图标 背景颜色
+                .setInActiveColor(R.color.gray) // 未选中状态颜色
+                .setActiveColor(R.color.white) // 条目背景色
+                .addItem(new BottomNavigationItem(R.drawable.zhuye, "主页"))
                 .addItem(new BottomNavigationItem(R.drawable.fenlei, "分类"))
                 .addItem(new BottomNavigationItem(R.drawable.faxian, "发现"))
                 .addItem(new BottomNavigationItem(R.drawable.gouwuche, "购物车"))

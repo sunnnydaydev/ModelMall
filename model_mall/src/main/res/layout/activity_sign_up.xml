@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activities.SignUpActivity">
+    tools:context=".ui.activities.SignupActivity">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

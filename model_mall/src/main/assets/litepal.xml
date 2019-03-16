@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="user_info" />
+    <version value="1" />
+    <list>
+        <mapping class="com.example.administrator.modelmall.db.UserRegisterBean" />
+    </list>
+
+
+</litepal>

@@ -4,12 +4,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.administrator.modelmall.R;
+import com.example.administrator.modelmall.db.UserRegisterBean;
+import com.orhanobut.logger.Logger;
 
-public class LoginActivity extends AppCompatActivity {
+import org.litepal.LitePal;
+import org.litepal.crud.DataSupport;
+
+import java.util.List;
+
+public class LoginActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+    public Object offerLayout() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    public void onBindView() {
+        hideActionBar();
+        List<UserRegisterBean> user = DataSupport.findAll(UserRegisterBean.class);
+        for (UserRegisterBean userInfo:user){
+            Logger.d(userInfo.getName());
+            Logger.d(userInfo.getEmail());
+            Logger.d(userInfo.getPhone());
+            Logger.d(userInfo.getPwd());
+        }
+    }
+
+    @Override
+    public void destory() {
+
     }
 }

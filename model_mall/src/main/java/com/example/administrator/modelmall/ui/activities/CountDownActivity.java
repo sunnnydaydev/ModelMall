@@ -43,7 +43,7 @@ public class CountDownActivity extends BaseActivity {
                     countDownText.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            startActivity(new Intent(CountDownActivity.this, SignUpActivity.class));
+                            startActivity(new Intent(CountDownActivity.this, SignupActivity.class));
                             finish();
                         }
                     });
@@ -53,7 +53,7 @@ public class CountDownActivity extends BaseActivity {
 
                 @Override
                 public void onFinish() {
-                    startActivity(new Intent(CountDownActivity.this, SignUpActivity.class));
+                    startActivity(new Intent(CountDownActivity.this, SignupActivity.class));
                     finish();
                 }
             }.start();

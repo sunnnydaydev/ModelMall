@@ -1,8 +1,7 @@
 package com.example.administrator.modelmall.ui.activities;
 
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
 import android.widget.Button;
@@ -10,11 +9,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.modelmall.R;
+import com.example.administrator.modelmall.db.UserRegisterBean;
 import com.example.administrator.modelmall.utils.RegularVerification;
+
+import org.litepal.LitePal;
 
 import butterknife.BindView;
 
-public class SignUpActivity extends BaseActivity implements View.OnClickListener {
+public class SignupActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.tv_name)
     public TextInputEditText userName;
     @BindView(R.id.tv_email)
@@ -30,6 +32,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     Button btnRegister;
     @BindView(R.id.tv_to_login)
     TextView toLogin;
+    private String name;
+    private String email;
+    private String phoneNumber;
+    private String pwd;
 
     @Override
     public Object offerLayout() {
@@ -41,6 +47,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     public void onBindView() {
         hideActionBar();
         btnRegister.setOnClickListener(this);
+        toLogin.setOnClickListener(this);
     }
 
 
@@ -49,10 +56,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
      */
     private boolean checkInfo() {
         // 获得用户输入信息
-        String name = userName.getText().toString();
-        String email = userEmail.getText().toString();
-        String phoneNumber = userPhoneNumber.getText().toString();
-        String pwd = userPwd.getText().toString();
+        name = userName.getText().toString();
+        email = userEmail.getText().toString();
+        phoneNumber = userPhoneNumber.getText().toString();
+        pwd = userPwd.getText().toString();
         String confirm = userConfirm.getText().toString();
 
         boolean isPass = true; // 是否通过检测
@@ -86,12 +93,35 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if ( checkInfo()){
-            Toast.makeText(this, "开始注册", Toast.LENGTH_SHORT).show();
-            // todo 数据提交数据库 （实际是提交网络）
+        switch (v.getId()){
+            case R.id.btn_register:
+                if ( checkInfo()){
+                    //  数据提交数据库 （实际是提交网络）
+                    setDataTodb();
+
+                    //  定制对话框  对话框转完跳转 登录界面
+
+                    startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+                }
+                break;
+            case R.id.tv_to_login:
+                startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+                break;
         }
 
+
     }
+
+    private void setDataTodb() {
+        LitePal.getDatabase();
+        UserRegisterBean user = new UserRegisterBean();
+        user.setName(name);
+        user.setEmail(email);
+        user.setPhone(phoneNumber);
+        user.setPwd(pwd);
+        user.save();
+    }
+
     @Override
     public void destory() {
 

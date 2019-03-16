@@ -113,4 +113,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
     }
 
+    /**
+     * 隐藏actionbar
+     * */
+    public void hideActionBar(){
+        getSupportActionBar().hide();
+    }
+
 }

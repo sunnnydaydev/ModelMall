@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.widget.AppCompatTextView;
-import android.util.Log;
 import android.view.View;
 
 import com.example.administrator.modelmall.R;
@@ -44,7 +43,7 @@ public class CountDownActivity extends BaseActivity {
                     countDownText.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            startActivity(new Intent(CountDownActivity.this, GuideActivity.class));
+                            startActivity(new Intent(CountDownActivity.this, SignUpActivity.class));
                             finish();
                         }
                     });
@@ -54,7 +53,7 @@ public class CountDownActivity extends BaseActivity {
 
                 @Override
                 public void onFinish() {
-                    startActivity(new Intent(CountDownActivity.this, GuideActivity.class));
+                    startActivity(new Intent(CountDownActivity.this, SignUpActivity.class));
                     finish();
                 }
             }.start();

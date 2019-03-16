@@ -2,7 +2,6 @@ package com.example.administrator.modelmall.ui.activities;
 
 
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
@@ -10,7 +9,11 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.adapter.MainPageAdapter;
 import com.example.administrator.modelmall.base.BasePage;
-import com.example.administrator.modelmall.base.MainPageImpl;
+import com.example.administrator.modelmall.base.FindPageFactory;
+import com.example.administrator.modelmall.base.MainPageFactory;
+import com.example.administrator.modelmall.base.MinePageFactory;
+import com.example.administrator.modelmall.base.ShoppingPageFactory;
+import com.example.administrator.modelmall.base.SortPageFactory;
 import com.example.administrator.modelmall.net.CommonOkHttpClient;
 import com.example.administrator.modelmall.net.listener.DisposeDataHandle;
 import com.example.administrator.modelmall.net.listener.DisposeDataListener;
@@ -49,11 +52,11 @@ public class MainActivity extends BaseActivity {
 
     private void initViewpagerData() {
         mList = new ArrayList<>();
-        mList.add(new MainPageImpl(MainActivity.this));
-        mList.add(new MainPageImpl(MainActivity.this));
-        mList.add(new MainPageImpl(MainActivity.this));
-        mList.add(new MainPageImpl(MainActivity.this));
-        mList.add(new MainPageImpl(MainActivity.this));
+        mList.add(new MainPageFactory(MainActivity.this).produce());
+        mList.add(new SortPageFactory(MainActivity.this).produce());
+        mList.add(new FindPageFactory(MainActivity.this).produce());
+        mList.add(new ShoppingPageFactory(MainActivity.this).produce());
+        mList.add(new MinePageFactory(MainActivity.this).produce());
     }
 
     /**
@@ -73,24 +76,24 @@ public class MainActivity extends BaseActivity {
                 .initialise();
     }
 
-        @Override
-        public void destory () {
+    @Override
+    public void destory() {
 
-        }
-
-        private void testNet () {
-            String url = "https://www.wanandroid.com/tools/mockapi/7751/mall_mainpage_goods";
-            CommonOkHttpClient
-                    .sendRequest(new CommonRequest().createGetRequest(url, null), new CommonJsonCallback(new DisposeDataHandle(new DisposeDataListener() {
-                        @Override
-                        public void onSuccess(Object responseObj) {
-                            Toast.makeText(MainActivity.this, responseObj.toString(), Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onFailure(Object reasonObj) {
-
-                        }
-                    })));
-        }
     }
+
+    private void testNet() {
+        String url = "https://www.wanandroid.com/tools/mockapi/7751/mall_mainpage_goods";
+        CommonOkHttpClient
+                .sendRequest(new CommonRequest().createGetRequest(url, null), new CommonJsonCallback(new DisposeDataHandle(new DisposeDataListener() {
+                    @Override
+                    public void onSuccess(Object responseObj) {
+                        Toast.makeText(MainActivity.this, responseObj.toString(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Object reasonObj) {
+
+                    }
+                })));
+    }
+}

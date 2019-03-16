@@ -8,7 +8,7 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:gravity="center"
-          android:text="主页"
+          android:text="我的"
           android:textSize="20sp"
           tools:ignore="HardcodedText" />
 </android.support.v7.widget.LinearLayoutCompat>

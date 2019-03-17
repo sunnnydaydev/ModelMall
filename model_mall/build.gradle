@@ -10,7 +10,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        multiDexEnabled = true
     }
 
     buildTypes {
@@ -53,5 +52,5 @@ dependencies {
     //字体图标库
     implementation 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
     implementation 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
-    implementation 'com.android.support:multidex:1.0.3'
+  
 }

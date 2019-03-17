@@ -2,17 +2,23 @@ package com.example.administrator.modelmall.ui.activities;
 
 
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.db.UserRegisterBean;
+import com.example.administrator.modelmall.ui.customview.LoadingDialog;
 import com.example.administrator.modelmall.utils.RegularVerification;
 
 import org.litepal.LitePal;
+import org.litepal.crud.DataSupport;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -93,33 +99,48 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_register:
-                if ( checkInfo()){
-                    //  数据提交数据库 （实际是提交网络）
-                    setDataTodb();
-
-                    //  定制对话框  对话框转完跳转 登录界面
-
-                    startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+                if (checkInfo() && isSetDataTodbSuccess()) {
+                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 }
                 break;
             case R.id.tv_to_login:
-                startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 break;
         }
 
 
     }
 
-    private void setDataTodb() {
-        LitePal.getDatabase();
-        UserRegisterBean user = new UserRegisterBean();
-        user.setName(name);
-        user.setEmail(email);
-        user.setPhone(phoneNumber);
-        user.setPwd(pwd);
-        user.save();
+    /**
+     * 存数据是否成功
+     */
+    private boolean isSetDataTodbSuccess() {
+        boolean isSuccess = false;
+        String phone = null;
+        List<UserRegisterBean> users = DataSupport.findAll(UserRegisterBean.class);
+        if (users != null) {
+            for (UserRegisterBean userInfo : users) {
+                phone = userInfo.getPhone();
+            }
+        }
+        // 数据判断
+        if (phoneNumber.equals(phone)) {
+            Toast.makeText(this, "手机号已经注册", Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            LitePal.getDatabase();
+            UserRegisterBean user = new UserRegisterBean();
+            user.setName(name);
+            user.setEmail(email);
+            user.setPhone(phoneNumber);
+            user.setPwd(pwd);
+            user.save();
+            isSuccess = true;
+        }
+        return isSuccess;
     }
 
     @Override

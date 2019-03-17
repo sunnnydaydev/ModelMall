@@ -87,8 +87,17 @@
                 android:textSize="20sp"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
-                android:id="@+id/btn_register"
+                android:id="@+id/btn_login"
                 />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"
+                android:text="还未注册？注册"
+                tools:ignore="HardcodedText"
+                android:textSize="16sp"
+                android:id="@+id/tv_to_register"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

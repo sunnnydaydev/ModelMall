@@ -6,7 +6,9 @@ import android.os.CountDownTimer;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.example.administrator.modelmall.Constant.ModelConstant;
 import com.example.administrator.modelmall.R;
+import com.example.administrator.modelmall.utils.ModelPreference;
 
 import butterknife.BindView;
 
@@ -43,8 +45,7 @@ public class CountDownActivity extends BaseActivity {
                     countDownText.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            startActivity(new Intent(CountDownActivity.this, SignupActivity.class));
-                            finish();
+                            checkToJump();
                         }
                     });
                     int time = (int) millisUntilFinished;
@@ -53,11 +54,24 @@ public class CountDownActivity extends BaseActivity {
 
                 @Override
                 public void onFinish() {
-                    startActivity(new Intent(CountDownActivity.this, SignupActivity.class));
-                    finish();
+                    checkToJump();
                 }
             }.start();
         }
+    }
+
+    /**
+     * 首次进入引导页判断
+     */
+    private void checkToJump() {
+        boolean isFirstin = ModelPreference.getBoolean(CountDownActivity.this, ModelConstant.FIRST_IN, true);
+        if (isFirstin) {
+            startActivity(new Intent(CountDownActivity.this, GuideActivity.class));
+            ModelPreference.putBoolean(CountDownActivity.this, ModelConstant.FIRST_IN, false);
+        } else {
+            startActivity(new Intent(CountDownActivity.this, LoginActivity.class));
+        }
+        finish();
     }
 
     @Override

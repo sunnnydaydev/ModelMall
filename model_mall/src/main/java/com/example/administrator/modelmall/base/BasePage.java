@@ -20,6 +20,7 @@ public abstract class BasePage {
             throw new ClassCastException("resource id just can be type of layout");
         }
         this.view = convertView();
+        init();
     }
 
     /**

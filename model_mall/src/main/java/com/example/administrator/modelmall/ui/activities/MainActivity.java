@@ -47,13 +47,50 @@ public class MainActivity extends BaseActivity {
         setImmersionStatusBar();
         handleBottomButton();
         initViewpager();
+        initListener();
+
+
     }
 
+    /**
+     *  viewpager  与BottomNavigationBar 的事件监听
+     * */
+    private void initListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+                buttonBottom.selectTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}});
+        buttonBottom.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position) {
+                viewPager.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabUnselected(int position) {}
+
+            @Override
+            public void onTabReselected(int position) {}});
+    }
+
+    /**
+     * viewpager的操作
+     * */
     private void initViewpager() {
         initViewpagerData();
         viewPager.setAdapter(new MainPageAdapter(mList));
     }
 
+    /**
+     * viewpager 的数据源
+     * */
     private void initViewpagerData() {
         mList = new ArrayList<>();
         mList.add(new MainPageFactory(MainActivity.this).produce());
@@ -80,10 +117,6 @@ public class MainActivity extends BaseActivity {
                 .initialise();
     }
 
-    @Override
-    public void destory() {
-
-    }
 
     private void testNet() {
         String url = "https://www.wanandroid.com/tools/mockapi/7751/mall_mainpage_goods";
@@ -100,4 +133,8 @@ public class MainActivity extends BaseActivity {
                     }
                 })));
     }
+
+    @Override
+    public void destory() {}
+
 }

@@ -5,6 +5,9 @@ import android.widget.TextView;
 
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.base.BasePage;
+import com.orhanobut.logger.Logger;
+
+import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -13,8 +16,8 @@ import butterknife.ButterKnife;
  * Create by SunnyDay on 2019/03/15
  */
 public class SortPageImpl extends BasePage {
-    @BindView(R.id.sort)
-   public  TextView textView;
+
+    TextView textView;
 
     public SortPageImpl(Context context) {
         super(context);
@@ -27,8 +30,7 @@ public class SortPageImpl extends BasePage {
 
     @Override
     public void init() {
-        ButterKnife.bind(view);
-             textView.setText("这是分类界面");
+//         textView.setText("分类整理界面");
 
     }
 

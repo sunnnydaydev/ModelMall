@@ -102,6 +102,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.btn_register:
                 if (checkInfo() && isSetDataTodbSuccess()) {
+                    Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 }
                 break;

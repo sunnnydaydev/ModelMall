@@ -11,7 +11,7 @@ import android.view.View;
  * 五个界面的基类
  */
 public abstract class BasePage {
-    private Context context;
+    public Context context;
     public View view;
 
     public BasePage(Context context) {

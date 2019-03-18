@@ -1,6 +1,8 @@
 package com.example.administrator.modelmall.ui.activities;
 
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
 import android.widget.Toast;
 
@@ -39,8 +41,10 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindView() {
+        setImmersionStatusBar();
         handleBottomButton();
         initViewpager();
     }

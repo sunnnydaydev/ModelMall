@@ -2,11 +2,29 @@ package com.example.administrator.modelmall.base.impl;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.alibaba.android.vlayout.DelegateAdapter;
+import com.alibaba.android.vlayout.VirtualLayoutManager;
+import com.alibaba.android.vlayout.layout.GridLayoutHelper;
+import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
+import com.example.administrator.modelmall.Constant.ModelConstant;
 import com.example.administrator.modelmall.R;
+import com.example.administrator.modelmall.adapter.MainPageBannerAdapter;
+import com.example.administrator.modelmall.adapter.MainPageClassifyGridItemAdapter;
 import com.example.administrator.modelmall.base.BasePage;
+import com.example.administrator.modelmall.entity.EntityMainPage;
+import com.example.administrator.modelmall.net.CommonOkHttpClient;
+import com.example.administrator.modelmall.net.listener.DisposeDataHandle;
+import com.example.administrator.modelmall.net.listener.DisposeDataListener;
+import com.example.administrator.modelmall.net.request.CommonRequest;
+import com.example.administrator.modelmall.net.response.CommonJsonCallback;
+
+import com.joanzapata.iconify.widget.IconTextView;
+import com.orhanobut.logger.Logger;
 
 
 /**
@@ -15,6 +33,10 @@ import com.example.administrator.modelmall.base.BasePage;
 public class MainPageImpl extends BasePage {
     private Activity context;
     private SwipeRefreshLayout mRefreshLayout;
+    private IconTextView scan;
+    private IconTextView msg;
+    private RecyclerView recyclerView;
+    private FloatingActionButton recomment;
 
     public MainPageImpl(Context context) {
         super(context);
@@ -29,8 +51,56 @@ public class MainPageImpl extends BasePage {
     @Override
     public void init() {
         mRefreshLayout = view.findViewById(R.id.srl_refresh);
+        scan = view.findViewById(R.id.tv_scan);
+        msg = view.findViewById(R.id.tv_msg);
+        recyclerView = view.findViewById(R.id.recycler_view);
+        recomment = view.findViewById(R.id.recomment);
         initRefreshLayout();
+        getDataFromSever();
 
+
+    }
+
+
+    /**
+     * 从服务器获得数据
+     */
+    private void getDataFromSever() {
+
+        CommonOkHttpClient.sendRequest(CommonRequest.createGetRequest(ModelConstant.URL_MAINPAGE, null), new CommonJsonCallback(new DisposeDataHandle(EntityMainPage.class, new DisposeDataListener() {
+
+            @Override
+            public void onSuccess(Object responseObj) {
+                handleRecyclerViewInfo((EntityMainPage) responseObj);
+            }
+
+            @Override
+            public void onFailure(Object reasonObj) {
+                Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+            }
+        })));
+
+
+    }
+
+    /**
+     * recyclerView 的界面处理
+     * 采用 vlayout 搭建
+     */
+    private void handleRecyclerViewInfo(EntityMainPage entityMainPage) {
+        // 1 设置布局管理器
+        VirtualLayoutManager manager = new VirtualLayoutManager(context);
+        recyclerView.setLayoutManager(manager);
+        //2 设置adapter
+        DelegateAdapter adapter = new DelegateAdapter(manager, true);
+        recyclerView.setAdapter(adapter);
+        // 3 添加不同的种类
+
+        // 首页 banner
+        adapter.addAdapter(new MainPageBannerAdapter(context, new LinearLayoutHelper(), entityMainPage));
+        //首页 ClassifyGridItem（10个item）
+        GridLayoutHelper gridLayoutHelper =new GridLayoutHelper(5);//每行的显示数目
+        adapter.addAdapter(new MainPageClassifyGridItemAdapter(context,gridLayoutHelper,entityMainPage));
     }
 
     /**
@@ -77,5 +147,6 @@ public class MainPageImpl extends BasePage {
             }
         }).start();
     }
+
 
 }

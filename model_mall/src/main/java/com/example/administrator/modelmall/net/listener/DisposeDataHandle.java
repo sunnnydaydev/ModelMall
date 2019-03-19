@@ -12,7 +12,7 @@ public class DisposeDataHandle {
     }
 
 
-    public DisposeDataHandle(DisposeDataListener listener,Class<?> mClass ) {
+    public DisposeDataHandle(Class<?> mClass ,DisposeDataListener listener ) {
         this.listener = listener;
         this.mClass = mClass;
 

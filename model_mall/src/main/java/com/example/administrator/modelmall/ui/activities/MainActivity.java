@@ -118,22 +118,6 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    private void testNet() {
-        String url = "https://www.wanandroid.com/tools/mockapi/7751/mall_mainpage_goods";
-        CommonOkHttpClient
-                .sendRequest(new CommonRequest().createGetRequest(url, null), new CommonJsonCallback(new DisposeDataHandle(new DisposeDataListener() {
-                    @Override
-                    public void onSuccess(Object responseObj) {
-                        Toast.makeText(MainActivity.this, responseObj.toString(), Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onFailure(Object reasonObj) {
-
-                    }
-                })));
-    }
-
     @Override
     public void destory() {}
 

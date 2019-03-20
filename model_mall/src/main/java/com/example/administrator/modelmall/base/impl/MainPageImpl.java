@@ -16,6 +16,7 @@ import com.example.administrator.modelmall.Constant.ModelConstant;
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.adapter.MainPageBannerAdapter;
 import com.example.administrator.modelmall.adapter.MainPageClassifyGridItemAdapter;
+import com.example.administrator.modelmall.adapter.MainPageHotSortAdapter;
 import com.example.administrator.modelmall.adapter.MainPageMoreImageAdapter;
 import com.example.administrator.modelmall.adapter.MainPageSingleImageAdapter;
 import com.example.administrator.modelmall.base.BasePage;
@@ -107,15 +108,17 @@ public class MainPageImpl extends BasePage {
         // 首页 banner
         adapter.addAdapter(new MainPageBannerAdapter(context, new LinearLayoutHelper(), entityMainPage));
         // 首页 ClassifyGridItem（10个item）
-        GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(5,10);//每行的显示数目
+        GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(5, 10);//每行的显示数目
         gridLayoutHelper.setVGap(30);
         gridLayoutHelper.setMarginTop(20);
         gridLayoutHelper.setMarginBottom(20);
         adapter.addAdapter(new MainPageClassifyGridItemAdapter(context, gridLayoutHelper, entityMainPage));
         // 首页 10个item 下的单张图片
-        adapter.addAdapter(new MainPageSingleImageAdapter(context,new LinearLayoutHelper(),entityMainPage));      // 首页 单张图片下的四个大图（个数由服务器配置）
-        adapter.addAdapter(new MainPageMoreImageAdapter(context,new GridLayoutHelper(2),entityMainPage));
-
+        adapter.addAdapter(new MainPageSingleImageAdapter(context, new LinearLayoutHelper(), entityMainPage));
+        // 首页 单张图片下的四个大图（个数由服务器配置）
+        adapter.addAdapter(new MainPageMoreImageAdapter(context, new GridLayoutHelper(2), entityMainPage));
+         //首页 热搜
+        adapter.addAdapter(new MainPageHotSortAdapter(context, new LinearLayoutHelper(), entityMainPage));
 
     }
 

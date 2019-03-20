@@ -16,12 +16,6 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.entity.EntityMainPage;
-import com.example.administrator.modelmall.loader.ModelImageLoader;
-import com.youth.banner.Banner;
-import com.youth.banner.listener.OnBannerListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**

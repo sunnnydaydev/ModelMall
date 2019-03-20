@@ -91,16 +91,23 @@ public class MainPageImpl extends BasePage {
         // 1 设置布局管理器
         VirtualLayoutManager manager = new VirtualLayoutManager(context);
         recyclerView.setLayoutManager(manager);
+        // 设置缓存（非必须）
+        final RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
+        recyclerView.setRecycledViewPool(viewPool);
+        viewPool.setMaxRecycledViews(0, 20);
+
         //2 设置adapter
         DelegateAdapter adapter = new DelegateAdapter(manager, true);
         recyclerView.setAdapter(adapter);
         // 3 添加不同的种类
 
         // 首页 banner
-        adapter.addAdapter(new MainPageBannerAdapter(context, new LinearLayoutHelper(), entityMainPage));
-        //首页 ClassifyGridItem（10个item）
-        GridLayoutHelper gridLayoutHelper =new GridLayoutHelper(5);//每行的显示数目
-        adapter.addAdapter(new MainPageClassifyGridItemAdapter(context,gridLayoutHelper,entityMainPage));
+        LinearLayoutHelper linearLayoutHelper = new LinearLayoutHelper();
+        linearLayoutHelper.setMarginBottom(5);
+        adapter.addAdapter(new MainPageBannerAdapter(context, linearLayoutHelper, entityMainPage));
+        // 首页 ClassifyGridItem（10个item）
+        GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(5,10);//每行的显示数目
+        adapter.addAdapter(new MainPageClassifyGridItemAdapter(context, gridLayoutHelper, entityMainPage));
     }
 
     /**

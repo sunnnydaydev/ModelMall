@@ -33,7 +33,6 @@ public class MainPageClassifyGridItemAdapter extends DelegateAdapter.Adapter<Mai
     private Context context;
     private LayoutHelper layoutHelper;
     private EntityMainPage entityMainPage;
-    private List<String> urlList;
 
     public MainPageClassifyGridItemAdapter(Context context, LayoutHelper layoutHelper, EntityMainPage entityMainPage) {
         this.context = context;
@@ -58,6 +57,7 @@ public class MainPageClassifyGridItemAdapter extends DelegateAdapter.Adapter<Mai
         Glide
                 .with(context)
                 .load(entityMainPage.getClassifyGridItems().get(position).getGrid_url())
+                .placeholder(R.mipmap.ic_launcher)
                 .into(holder.img);
         holder.imgDesc.setText(entityMainPage.getClassifyGridItems().get(position).getDesc());
 

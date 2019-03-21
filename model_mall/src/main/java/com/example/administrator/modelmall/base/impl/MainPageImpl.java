@@ -14,10 +14,12 @@ import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.example.administrator.modelmall.Constant.ModelConstant;
 import com.example.administrator.modelmall.R;
+import com.example.administrator.modelmall.adapter.MainPageAdapter;
 import com.example.administrator.modelmall.adapter.MainPageBannerAdapter;
 import com.example.administrator.modelmall.adapter.MainPageClassifyGridItemAdapter;
 import com.example.administrator.modelmall.adapter.MainPageHotSortAdapter;
 import com.example.administrator.modelmall.adapter.MainPageMoreImageAdapter;
+import com.example.administrator.modelmall.adapter.MainPageRecommentAdapter;
 import com.example.administrator.modelmall.adapter.MainPageSingleImageAdapter;
 import com.example.administrator.modelmall.base.BasePage;
 import com.example.administrator.modelmall.entity.EntityMainPage;
@@ -117,9 +119,13 @@ public class MainPageImpl extends BasePage {
         adapter.addAdapter(new MainPageSingleImageAdapter(context, new LinearLayoutHelper(), entityMainPage));
         // 首页 单张图片下的四个大图（个数由服务器配置）
         adapter.addAdapter(new MainPageMoreImageAdapter(context, new GridLayoutHelper(2), entityMainPage));
-         //首页 热搜
+        //首页 热搜
         adapter.addAdapter(new MainPageHotSortAdapter(context, new LinearLayoutHelper(), entityMainPage));
-
+        //  首页 推荐
+        LinearLayoutHelper linearLayoutHelper = new LinearLayoutHelper();
+         linearLayoutHelper.setDividerHeight(50);
+        linearLayoutHelper.setMarginBottom(10);
+        adapter.addAdapter(new MainPageRecommentAdapter(context, linearLayoutHelper, entityMainPage));
     }
 
     /**

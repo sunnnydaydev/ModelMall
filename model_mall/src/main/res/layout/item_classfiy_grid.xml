@@ -2,7 +2,8 @@
 <android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/ll_layout">
     <android.support.v7.widget.AppCompatImageView
         android:background="@null"
         android:id="@+id/img"

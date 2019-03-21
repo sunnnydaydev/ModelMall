@@ -3,6 +3,7 @@ package com.example.administrator.modelmall.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.entity.EntityMainPage;
+import com.example.administrator.modelmall.ui.customview.ToastUtils;
 
 
 /**
@@ -47,13 +49,19 @@ public class MainPageClassifyGridItemAdapter extends DelegateAdapter.Adapter<Mai
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MainViewHolder holder, final int position) {
         Glide
                 .with(context)
                 .load(entityMainPage.getClassifyGridItems().get(position).getGrid_url())
                 .placeholder(R.mipmap.ic_launcher)
                 .into(holder.img);
         holder.imgDesc.setText(entityMainPage.getClassifyGridItems().get(position).getDesc());
+        holder.llLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showToast(context,"点击了第"+position+"条目",ToastUtils.LENGTH_LONG);
+            }
+        });
 
     }
 
@@ -70,12 +78,14 @@ public class MainPageClassifyGridItemAdapter extends DelegateAdapter.Adapter<Mai
     static class MainViewHolder extends RecyclerView.ViewHolder {
         AppCompatImageView img;
         TextView imgDesc;
+        LinearLayoutCompat llLayout;
 
 
         public MainViewHolder(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.img);
             imgDesc = itemView.findViewById(R.id.img_desc);
+            llLayout = itemView.findViewById(R.id.ll_layout);
         }
     }
 }

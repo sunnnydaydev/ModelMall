@@ -13,6 +13,7 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.entity.EntityMainPage;
 import com.example.administrator.modelmall.loader.ModelImageLoader;
+import com.example.administrator.modelmall.ui.customview.ToastUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.listener.OnBannerListener;
 
@@ -59,7 +60,7 @@ public class MainPageBannerAdapter extends DelegateAdapter.Adapter<MainPageBanne
         holder.banner.setOnBannerListener(new OnBannerListener() {
             @Override
             public void OnBannerClick(int position) {
-                Toast.makeText(context, "亲 这儿看看就行了哈", Toast.LENGTH_LONG).show();
+                ToastUtils.showToast(context,"程序员小哥正在路上",ToastUtils.LENGTH_LONG);
             }
         });
 

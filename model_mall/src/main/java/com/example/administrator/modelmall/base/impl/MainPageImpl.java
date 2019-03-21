@@ -29,6 +29,7 @@ import com.example.administrator.modelmall.net.listener.DisposeDataListener;
 import com.example.administrator.modelmall.net.request.CommonRequest;
 import com.example.administrator.modelmall.net.response.CommonJsonCallback;
 
+import com.example.administrator.modelmall.ui.customview.ToastUtils;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.orhanobut.logger.Logger;
 
@@ -83,6 +84,7 @@ public class MainPageImpl extends BasePage {
             @Override
             public void onFailure(Object reasonObj) {
                 Toast.makeText(context, "error", Toast.LENGTH_SHORT).show();
+
             }
         })));
 
@@ -165,7 +167,7 @@ public class MainPageImpl extends BasePage {
                 context.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "没有更多数据了", Toast.LENGTH_LONG).show();
+                        ToastUtils.showToast(context,"没有更多数据了",ToastUtils.LENGTH_LONG);
                         mRefreshLayout.setRefreshing(false);
                     }
                 });

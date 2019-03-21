@@ -4,12 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-      <TextView
-          android:id="@+id/sort"
+      <android.support.v7.widget.Toolbar
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:gravity="center"
-          android:text="分类"
-          android:textSize="20sp"
-          tools:ignore="HardcodedText" />
+          android:layout_height="80dp"
+          android:background="@color/orange">
+            <TextView
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="分类"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="HardcodedText"
+                android:layout_marginEnd="10dp" />
+      </android.support.v7.widget.Toolbar>
 </android.support.v7.widget.LinearLayoutCompat>

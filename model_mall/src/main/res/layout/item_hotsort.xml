@@ -21,6 +21,7 @@
         android:paddingRight="10dp">
         <!-- left-->
         <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/ll_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -89,6 +90,7 @@
         </android.support.v7.widget.LinearLayoutCompat>
         <!-- middle-->
         <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/ll_Middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -160,6 +162,7 @@
         </android.support.v7.widget.LinearLayoutCompat>
         <!-- right-->
         <android.support.v7.widget.LinearLayoutCompat
+            android:id="@+id/ll_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

@@ -3,12 +3,127 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-      <TextView
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+      <android.support.v7.widget.Toolbar
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:gravity="center"
-          android:text="购物车"
-          android:textSize="20sp"
-          tools:ignore="HardcodedText" />
+          android:layout_height="75dp"
+          android:background="@color/orange">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                  <TextView
+                      android:id="@+id/tv_clear"
+                      android:layout_marginLeft="20dp"
+                      android:layout_centerVertical="true"
+                      android:gravity="center"
+                      android:textColor="@color/white"
+                      android:textSize="20sp"
+                      android:text="清空"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      tools:ignore="HardcodedText"
+                      android:layout_marginStart="20dp" />
+                  <TextView
+                      android:layout_centerInParent="true"
+                      android:gravity="center"
+                      android:layout_marginRight="10dp"
+                      android:textColor="@color/white"
+                      android:textSize="20sp"
+                      android:text="购物车"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      tools:ignore="HardcodedText"
+                      android:layout_marginEnd="10dp" />
+                  <TextView
+                      android:id="@+id/tv_del"
+                      android:layout_alignParentRight="true"
+                      android:layout_marginRight="20dp"
+                      android:layout_centerVertical="true"
+                      android:gravity="center"
+                      android:textColor="@color/white"
+                      android:textSize="20sp"
+                      android:text="删除"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      tools:ignore="HardcodedText"
+                      android:layout_alignParentEnd="true" />
+            </RelativeLayout>
+      </android.support.v7.widget.Toolbar>
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/shop_cart"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="8">
+      </android.support.v7.widget.RecyclerView>
+      <LinearLayout
+          android:minHeight="50dp"
+          android:layout_gravity="bottom"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:orientation="horizontal">
+            <!-- 全选图标模块-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:minHeight="50dp">
+                  <com.joanzapata.iconify.widget.IconTextView
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:text="{fa-check-circle}"
+                      tools:ignore="HardcodedText"
+                      android:gravity="center"
+                      android:textSize="20sp"
+                      android:textColor="@color/gray"/>
+                  <TextView
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:text="全选"
+                      tools:ignore="HardcodedText"
+                      android:gravity="center"
+                      android:textSize="20sp"
+                      android:textColor="@color/orange"/>
+            </LinearLayout>
+            <!-- 合计-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:minHeight="50dp">
+                  <TextView
+                      android:gravity="center"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:text="合计"
+                      android:textColor="@color/gray"
+                      tools:ignore="HardcodedText" />
+                  <TextView
+                      android:gravity="center|left"
+                      android:layout_width="0dp"
+                      android:layout_height="match_parent"
+                      android:layout_weight="1"
+                      android:text="￥0.0"
+                      android:textColor="@color/red"
+                      tools:ignore="HardcodedText" />
+            </LinearLayout>
+            <TextView
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="结算"
+                android:background="@drawable/bg_summary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="50dp"
+                tools:ignore="HardcodedText" />
+
+      </LinearLayout>
 </android.support.v7.widget.LinearLayoutCompat>

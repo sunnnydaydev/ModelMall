@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.android.vlayout.DelegateAdapter;
@@ -37,13 +38,15 @@ import com.orhanobut.logger.Logger;
 /**
  * Create by SunnyDay on 2019/03/15
  */
-public class MainPageImpl extends BasePage {
+public class MainPageImpl extends BasePage implements View.OnClickListener {
     private Activity context;
     private SwipeRefreshLayout mRefreshLayout;
     private IconTextView scan;
     private IconTextView msg;
     private RecyclerView recyclerView;
     private FloatingActionButton recomment;
+    private DelegateAdapter adapter;
+    private EntityMainPage entity;
 
     public MainPageImpl(Context context) {
         super(context);
@@ -62,9 +65,10 @@ public class MainPageImpl extends BasePage {
         msg = view.findViewById(R.id.tv_msg);
         recyclerView = view.findViewById(R.id.recycler_view);
         recomment = view.findViewById(R.id.recomment);
+
         initRefreshLayout();
         getDataFromSever();
-
+        recomment.setOnClickListener(this);
 
     }
 
@@ -96,6 +100,7 @@ public class MainPageImpl extends BasePage {
      * 采用 vlayout 搭建
      */
     private void handleRecyclerViewInfo(EntityMainPage entityMainPage) {
+        entity = entityMainPage;
         // 1 设置布局管理器
         VirtualLayoutManager manager = new VirtualLayoutManager(context);
         recyclerView.setLayoutManager(manager);
@@ -105,7 +110,7 @@ public class MainPageImpl extends BasePage {
         viewPool.setMaxRecycledViews(0, 20);
 
         //2 设置adapter
-        DelegateAdapter adapter = new DelegateAdapter(manager, true);
+        adapter = new DelegateAdapter(manager, true);
         recyclerView.setAdapter(adapter);
         // 3 添加不同的种类
 
@@ -123,9 +128,13 @@ public class MainPageImpl extends BasePage {
         adapter.addAdapter(new MainPageMoreImageAdapter(context, new GridLayoutHelper(2), entityMainPage));
         //首页 热搜
         adapter.addAdapter(new MainPageHotSortAdapter(context, new LinearLayoutHelper(), entityMainPage));
+
+    }
+
+    private void recommentData(DelegateAdapter adapter, EntityMainPage entityMainPage) {
         //  首页 推荐
         LinearLayoutHelper linearLayoutHelper = new LinearLayoutHelper();
-         linearLayoutHelper.setDividerHeight(50);
+        linearLayoutHelper.setDividerHeight(50);
         linearLayoutHelper.setMarginBottom(10);
         adapter.addAdapter(new MainPageRecommentAdapter(context, linearLayoutHelper, entityMainPage));
     }
@@ -167,7 +176,7 @@ public class MainPageImpl extends BasePage {
                 context.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ToastUtils.showToast(context,"没有更多数据了",ToastUtils.LENGTH_LONG);
+                        ToastUtils.showToast(context, "没有更多数据了", ToastUtils.LENGTH_LONG);
                         mRefreshLayout.setRefreshing(false);
                     }
                 });
@@ -176,4 +185,17 @@ public class MainPageImpl extends BasePage {
     }
 
 
+    /**
+     * 各种点击事件处理
+     * */
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.recomment:
+                    ToastUtils.showToast(context, "推荐成功，请继续往下浏览", ToastUtils.LENGTH_LONG);
+                    recommentData(adapter, entity);
+                    adapter.notifyDataSetChanged();
+                break;
+        }
+    }
 }

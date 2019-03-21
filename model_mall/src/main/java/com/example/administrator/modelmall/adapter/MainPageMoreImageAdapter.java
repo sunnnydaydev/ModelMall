@@ -13,6 +13,7 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.entity.EntityMainPage;
+import com.example.administrator.modelmall.ui.customview.ToastUtils;
 
 
 /**
@@ -50,6 +51,13 @@ public class MainPageMoreImageAdapter extends DelegateAdapter.Adapter<MainPageMo
                 .load(entityMainPage.getFour_goods_image().get(position).getFour_image_url())
                 .placeholder(R.drawable.more)
                 .into(holder.img);
+
+        holder.img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showToast(context,"程序员小哥正在努力加班中",ToastUtils.LENGTH_LONG);
+            }
+        });
 
 
 }

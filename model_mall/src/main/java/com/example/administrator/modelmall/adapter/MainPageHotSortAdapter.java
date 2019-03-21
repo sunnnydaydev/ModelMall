@@ -2,8 +2,10 @@ package com.example.administrator.modelmall.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.entity.EntityMainPage;
+import com.example.administrator.modelmall.ui.activities.GoodsInfoActivity;
 import com.orhanobut.logger.Logger;
 
 
@@ -23,7 +26,7 @@ import com.orhanobut.logger.Logger;
  * <p>
  * 首页的热搜adapter   大图+3小图的界面
  */
-public class MainPageHotSortAdapter extends DelegateAdapter.Adapter<MainPageHotSortAdapter.MainViewHolder> {
+public class MainPageHotSortAdapter extends DelegateAdapter.Adapter<MainPageHotSortAdapter.MainViewHolder> implements View.OnClickListener {
     private Context context;
     private LayoutHelper layoutHelper;
     private EntityMainPage entityMainPage;
@@ -86,11 +89,14 @@ public class MainPageHotSortAdapter extends DelegateAdapter.Adapter<MainPageHotS
         holder.singlePriceMiddle.setText("￥" + entityMainPage.getHotSort().get(position).getThreeGoods().get(1).getSingePrice());
         holder.totalPriceMiddle.setText("￥" + entityMainPage.getHotSort().get(position).getThreeGoods().get(1).getSingePrice());
 
-       // 右面
+        // 右面
         holder.tvDescRight.setText(entityMainPage.getHotSort().get(position).getThreeGoods().get(2).getDesc());
         holder.singlePriceRight.setText("￥" + entityMainPage.getHotSort().get(position).getThreeGoods().get(2).getSingePrice());
         holder.totalPriceRight.setText("￥" + entityMainPage.getHotSort().get(position).getThreeGoods().get(2).getSingePrice());
 
+        holder.llLeft.setOnClickListener(this);
+        holder.llMiddle.setOnClickListener(this);
+        holder.llRight.setOnClickListener(this);
     }
 
 
@@ -98,6 +104,7 @@ public class MainPageHotSortAdapter extends DelegateAdapter.Adapter<MainPageHotS
     public int getItemCount() {
         return entityMainPage == null ? 0 : entityMainPage.getHotSort().size();//容错处理
     }
+
 
     /**
      * holder
@@ -118,6 +125,9 @@ public class MainPageHotSortAdapter extends DelegateAdapter.Adapter<MainPageHotS
         private TextView tvDescRight;
         private TextView singlePriceRight;
         private TextView totalPriceRight;
+        private LinearLayoutCompat llLeft;
+        private LinearLayoutCompat llMiddle;
+        private LinearLayoutCompat llRight;
 
         public MainViewHolder(View itemView) {
             super(itemView);
@@ -142,7 +152,25 @@ public class MainPageHotSortAdapter extends DelegateAdapter.Adapter<MainPageHotS
             singlePriceRight = itemView.findViewById(R.id.single_price_right);
             totalPriceRight = itemView.findViewById(R.id.total__price_right);
 
+            llLeft = itemView.findViewById(R.id.ll_left);
+            llMiddle = itemView.findViewById(R.id.ll_Middle);
+            llRight = itemView.findViewById(R.id.ll_right);
 
+        }
+    }
+
+    /**
+     * 点击事件的处理
+     */
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_left:
+            case R.id.ll_Middle:
+            case R.id.ll_right:
+                // 模拟  真正电商此处会传递商品信息
+                context.startActivity(new Intent(context,GoodsInfoActivity.class));
+                break;
         }
     }
 }

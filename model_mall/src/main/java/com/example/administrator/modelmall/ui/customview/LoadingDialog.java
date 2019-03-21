@@ -6,6 +6,8 @@ import android.content.Context;
 
 /**
  * Create by SunnyDay on 2019/03/16
+ *
+ * 自定义对话框  没有使用 （low）
  */
 public class LoadingDialog {
     private Context context;

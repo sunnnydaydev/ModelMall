@@ -27,7 +27,8 @@
         </activity>
         <activity android:name=".ui.activities.GuideActivity" />
         <activity android:name=".ui.activities.SignupActivity" />
-        <activity android:name=".ui.activities.LoginActivity"></activity>
+        <activity android:name=".ui.activities.LoginActivity" />
+        <activity android:name=".ui.activities.GoodsInfoActivity"></activity>
     </application>
 
 </manifest>

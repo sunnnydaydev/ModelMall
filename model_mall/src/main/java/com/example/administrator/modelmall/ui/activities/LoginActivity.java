@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.db.UserRegisterBean;
+import com.example.administrator.modelmall.ui.customview.StatusBarUtils;
+import com.example.administrator.modelmall.ui.customview.ToastUtils;
 import com.example.administrator.modelmall.utils.RegularVerification;
 import com.orhanobut.logger.Logger;
 
@@ -44,6 +46,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void onBindView() {
         hideActionBar();
+        StatusBarUtils.setWindowStatusBarColor(this,R.color.orange);
         getDataFromDB();
 
         btnLogin.setOnClickListener(this);
@@ -97,11 +100,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             case R.id.btn_login:
                 if (checkUserInputData()) {
                     if (email.equals(dbEmail) && pwd.equals(dbPwd)) {
-                        Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
+                        ToastUtils.showToast(this,"登陆成功",ToastUtils.LENGTH_LONG);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
                     } else {
-                        Toast.makeText(this, "账号或者密码有误", Toast.LENGTH_SHORT).show();
+                        ToastUtils.showToast(this,"账号或者密码有误",ToastUtils.LENGTH_LONG);
                     }
                 }
                 break;

@@ -2,17 +2,19 @@ package com.example.administrator.modelmall.ui.activities;
 
 
 import android.content.Intent;
-import android.os.SystemClock;
+
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.db.UserRegisterBean;
-import com.example.administrator.modelmall.ui.customview.LoadingDialog;
+
+import com.example.administrator.modelmall.ui.customview.StatusBarUtils;
+import com.example.administrator.modelmall.ui.customview.ToastUtils;
 import com.example.administrator.modelmall.utils.RegularVerification;
 
 import org.litepal.LitePal;
@@ -51,7 +53,8 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onBindView() {
-        hideActionBar();
+         hideActionBar();
+         StatusBarUtils.setWindowStatusBarColor(this,R.color.orange);
         btnRegister.setOnClickListener(this);
         toLogin.setOnClickListener(this);
     }
@@ -102,7 +105,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.btn_register:
                 if (checkInfo() && isSetDataTodbSuccess()) {
-                    Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
+                    ToastUtils.showToast(this,"注册成功",ToastUtils.LENGTH_LONG);
                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 }
                 break;
@@ -128,7 +131,7 @@ public class SignupActivity extends BaseActivity implements View.OnClickListener
         }
         // 数据判断
         if (phoneNumber.equals(phone)) {
-            Toast.makeText(this, "手机号已经注册", Toast.LENGTH_SHORT).show();
+            ToastUtils.showToast(this,"手机号已经注册",ToastUtils.LENGTH_LONG);
 
         } else {
 

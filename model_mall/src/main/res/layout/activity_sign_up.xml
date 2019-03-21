@@ -40,7 +40,7 @@
                 android:layout_height="72dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="24dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/cat" />
             <!--姓名-->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

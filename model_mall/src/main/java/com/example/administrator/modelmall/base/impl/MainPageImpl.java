@@ -11,10 +11,10 @@ import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
-import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
+
 import com.example.administrator.modelmall.Constant.ModelConstant;
 import com.example.administrator.modelmall.R;
-import com.example.administrator.modelmall.adapter.MainPageAdapter;
+
 import com.example.administrator.modelmall.adapter.MainPageBannerAdapter;
 import com.example.administrator.modelmall.adapter.MainPageClassifyGridItemAdapter;
 import com.example.administrator.modelmall.adapter.MainPageHotSortAdapter;

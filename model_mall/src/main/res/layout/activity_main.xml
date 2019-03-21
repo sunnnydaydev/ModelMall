@@ -11,15 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1"-->
-        <!--android:gravity="center"-->
-        <!--android:textSize="20sp"-->
-        <!--android:textColor="@color/red"-->
-        <!--android:text="测试数据"-->
-        <!--tools:ignore="HardcodedText" />-->
     <com.ashokvarma.bottomnavigation.BottomNavigationBar
         android:id="@+id/btn_bottom_navigation"
         android:layout_width="match_parent"

@@ -11,6 +11,10 @@ public enum IconModel implements Icon {
     // &#xe6c3  支付宝
     // &#xe502  扫一扫
     icon_scan('\ue502'),
+    icon_shop('\ue612'),
+    icon_kefu('\ue506'),
+    icon_guanzhu('\ue503'),
+    icon_gengduo('\ue63e'),
     icon_ali_pay('\ue6c3');
 
     private char character;

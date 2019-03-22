@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.entity.EntityMainPage;
 import com.example.administrator.modelmall.ui.activities.GoodsInfoActivity;
-import com.orhanobut.logger.Logger;
+
 
 
 /**

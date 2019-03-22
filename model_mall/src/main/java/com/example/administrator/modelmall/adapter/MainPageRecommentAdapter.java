@@ -2,8 +2,10 @@ package com.example.administrator.modelmall.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.alibaba.android.vlayout.LayoutHelper;
 import com.bumptech.glide.Glide;
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.entity.EntityMainPage;
+import com.example.administrator.modelmall.ui.activities.GoodsInfoActivity;
 
 
 /**
@@ -22,7 +25,7 @@ import com.example.administrator.modelmall.entity.EntityMainPage;
  * <p>
  * 首页的10个item下的一个图片展示
  */
-public class MainPageRecommentAdapter extends DelegateAdapter.Adapter<MainPageRecommentAdapter.MainViewHolder> {
+public class MainPageRecommentAdapter extends DelegateAdapter.Adapter<MainPageRecommentAdapter.MainViewHolder> implements View.OnClickListener {
     private Context context;
     private LayoutHelper layoutHelper;
     private EntityMainPage entityMainPage;
@@ -53,9 +56,11 @@ public class MainPageRecommentAdapter extends DelegateAdapter.Adapter<MainPageRe
                 .placeholder(R.drawable.img_small)
                 .into(holder.img);
         holder.tvDesc.setText(entityMainPage.getRecommends_goods().get(position).getDesc());
-        holder.tvSinglePrice.setText("￥"+entityMainPage.getRecommends_goods().get(position).getSinglePrice());
-        holder.tvTotalPrice.setText("￥"+entityMainPage.getRecommends_goods().get(position).getTotalPrice());
-        holder.tvGood.setText(" 好评率："+entityMainPage.getRecommends_goods().get(position).getRate()+"%");
+        holder.tvSinglePrice.setText("￥" + entityMainPage.getRecommends_goods().get(position).getSinglePrice());
+        holder.tvTotalPrice.setText("￥" + entityMainPage.getRecommends_goods().get(position).getTotalPrice());
+        holder.tvGood.setText(" 好评率：" + entityMainPage.getRecommends_goods().get(position).getRate() + "%");
+
+        holder.cardView.setOnClickListener(this);
     }
 
 
@@ -64,6 +69,7 @@ public class MainPageRecommentAdapter extends DelegateAdapter.Adapter<MainPageRe
 
         return entityMainPage == null ? 0 : entityMainPage.getRecommends_goods().size();//容错处理
     }
+
 
     /**
      * holder
@@ -74,6 +80,7 @@ public class MainPageRecommentAdapter extends DelegateAdapter.Adapter<MainPageRe
         TextView tvSinglePrice;
         TextView tvTotalPrice;
         TextView tvGood;
+        private CardView cardView;
 
 
         public MainViewHolder(View itemView) {
@@ -83,6 +90,16 @@ public class MainPageRecommentAdapter extends DelegateAdapter.Adapter<MainPageRe
             tvSinglePrice = itemView.findViewById(R.id.tv_single_price);
             tvTotalPrice = itemView.findViewById(R.id.tv_total_price);
             tvGood = itemView.findViewById(R.id.tv_good);
+            cardView = itemView.findViewById(R.id.cardview);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.cardview:
+                context.startActivity(new Intent(context,GoodsInfoActivity.class));
+                break;
         }
     }
 }

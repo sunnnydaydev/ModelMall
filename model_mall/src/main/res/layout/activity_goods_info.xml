@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.activities.GoodsInfoActivity">
     <!--toolbar-->
@@ -64,9 +65,9 @@
             android:orientation="vertical">
 
             <com.youth.banner.Banner
-                android:id="@+id/banner"
+                android:id="@+id/img_banner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="800dp">
 
             </com.youth.banner.Banner>
 
@@ -88,6 +89,7 @@
                     tools:ignore="HardcodedText" />
 
                 <ImageView
+                    android:id="@+id/img_1"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="10dp"
@@ -95,6 +97,7 @@
                     android:src="@mipmap/ic_launcher" />
 
                 <ImageView
+                    android:id="@+id/img_2"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="10dp"
@@ -102,6 +105,7 @@
                     android:src="@mipmap/ic_launcher" />
 
                 <ImageView
+                    android:id="@+id/img_3"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="10dp"
@@ -117,6 +121,7 @@
                 android:padding="10dp">
 
                 <TextView
+                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -126,20 +131,22 @@
                     android:textSize="18sp"
                     tools:ignore="HardcodedText" />
 
-                <com.joanzapata.iconify.widget.IconTextView
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_centerVertical="true"
                     android:id="@+id/pay_attation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    app:lottie_fileName="like.json"
+                    app:lottie_autoPlay="false"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="{icon-guanzhu}"
-                    android:textSize="20sp"
-                    tools:ignore="HardcodedText" />
+                    android:layout_marginRight="10dp" />
             </RelativeLayout>
 
             <TextView
+                android:textColor="@color/black"
+                android:id="@+id/goods_desc"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,11 +155,12 @@
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="20dp"
-                android:text="商品描述  blabla"
+                android:text="轩辰氏 春装男士外套男春秋连帽棒球服男生韩版修身印花休闲短款夹克男春季大码薄款衣服男装外套 7731黑色 L"
                 android:textSize="18sp"
                 tools:ignore="HardcodedText" />
 
             <RelativeLayout
+                android:id="@+id/rl_select"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
@@ -161,6 +169,7 @@
                 android:paddingLeft="10dp">
 
                 <TextView
+                    android:id="@+id/select_size_color"
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -184,6 +193,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rl_select_addr"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
@@ -191,6 +201,7 @@
                 android:paddingLeft="10dp">
 
                 <TextView
+                    android:id="@+id/post_to"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"

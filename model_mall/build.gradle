@@ -57,4 +57,5 @@ dependencies {
         transitive = true
         exclude group: 'com.android.support'
     }
+    implementation 'com.airbnb.android:lottie:2.1.0'
 }

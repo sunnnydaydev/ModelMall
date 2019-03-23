@@ -4,7 +4,6 @@ package com.example.administrator.modelmall.ui.activities;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
-import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -16,11 +15,17 @@ import com.example.administrator.modelmall.base.MainPageFactory;
 import com.example.administrator.modelmall.base.MinePageFactory;
 import com.example.administrator.modelmall.base.ShoppingPageFactory;
 import com.example.administrator.modelmall.base.SortPageFactory;
+import com.example.administrator.modelmall.events.GoodInfoMsg;
 import com.example.administrator.modelmall.net.CommonOkHttpClient;
 import com.example.administrator.modelmall.net.listener.DisposeDataHandle;
 import com.example.administrator.modelmall.net.listener.DisposeDataListener;
 import com.example.administrator.modelmall.net.request.CommonRequest;
 import com.example.administrator.modelmall.net.response.CommonJsonCallback;
+import com.orhanobut.logger.Logger;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +40,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.viewpager)
     public ViewPager viewPager;
     private List<BasePage> mList;
+    public GoodInfoMsg goodInfo;
 
     @Override
     public Object offerLayout() {
@@ -44,6 +50,7 @@ public class MainActivity extends BaseActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindView() {
+       // EventBus.getDefault().register(this);
         setImmersionStatusBar();
         handleBottomButton();
         initViewpager();
@@ -53,12 +60,13 @@ public class MainActivity extends BaseActivity {
     }
 
     /**
-     *  viewpager  与BottomNavigationBar 的事件监听
-     * */
+     * viewpager  与BottomNavigationBar 的事件监听
+     */
     private void initListener() {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
 
             @Override
             public void onPageSelected(int position) {
@@ -66,7 +74,9 @@ public class MainActivity extends BaseActivity {
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {}});
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
         buttonBottom.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
@@ -74,15 +84,18 @@ public class MainActivity extends BaseActivity {
             }
 
             @Override
-            public void onTabUnselected(int position) {}
+            public void onTabUnselected(int position) {
+            }
 
             @Override
-            public void onTabReselected(int position) {}});
+            public void onTabReselected(int position) {
+            }
+        });
     }
 
     /**
      * viewpager的操作
-     * */
+     */
     private void initViewpager() {
         initViewpagerData();
         viewPager.setAdapter(new MainPageAdapter(mList));
@@ -90,7 +103,7 @@ public class MainActivity extends BaseActivity {
 
     /**
      * viewpager 的数据源
-     * */
+     */
     private void initViewpagerData() {
         mList = new ArrayList<>();
         mList.add(new MainPageFactory(MainActivity.this).produce());
@@ -117,8 +130,17 @@ public class MainActivity extends BaseActivity {
                 .initialise();
     }
 
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void Event(GoodInfoMsg goodInfoMsg) {
+//        goodInfo = goodInfoMsg;
+//        Logger.d(goodInfoMsg.getGoodCount());
+//    }
 
     @Override
-    public void destory() {}
-
+    public void destory() {
+//        if (EventBus.getDefault().isRegistered(this)) {
+//            EventBus.getDefault().unregister(this);
+//        }
+    }
 }
+

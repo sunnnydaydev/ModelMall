@@ -12,20 +12,21 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.administrator.modelmall.R;
+import com.example.administrator.modelmall.events.GoodInfoMsg;
 import com.example.administrator.modelmall.loader.ModelImageLoader;
 import com.example.administrator.modelmall.ui.customview.StatusBarUtils;
 import com.example.administrator.modelmall.ui.customview.ToastUtils;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.orhanobut.dialogplus.DialogPlus;
-import com.orhanobut.dialogplus.DialogPlusBuilder;
-import com.orhanobut.dialogplus.ListHolder;
+
 import com.orhanobut.dialogplus.OnClickListener;
-import com.orhanobut.dialogplus.OnItemClickListener;
+
 import com.orhanobut.dialogplus.ViewHolder;
-import com.orhanobut.logger.Logger;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -152,6 +153,9 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                 break;
             case R.id.add_cart:
                 ToastUtils.showToast(this, "商品已经添加到购物车！", ToastUtils.LENGTH_LONG);
+                // todo 发送消息   添加了1个商品
+                EventBus.getDefault().post(new GoodInfoMsg(1));
+                finish();
                 break;
             case R.id.buy_rightnow:
                 ToastUtils.showToast(this, "model支付平台还未开张！", ToastUtils.LENGTH_LONG);

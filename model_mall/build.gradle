@@ -59,4 +59,6 @@ dependencies {
     }
     implementation 'com.airbnb.android:lottie:2.1.0'// 动画
     implementation 'com.orhanobut:dialogplus:1.11@aar'// 对话框
+
+    implementation 'org.greenrobot:eventbus:3.0.0'//eventBus
 }

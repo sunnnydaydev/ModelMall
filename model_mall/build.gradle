@@ -57,5 +57,6 @@ dependencies {
         transitive = true
         exclude group: 'com.android.support'
     }
-    implementation 'com.airbnb.android:lottie:2.1.0'
+    implementation 'com.airbnb.android:lottie:2.1.0'// 动画
+    implementation 'com.orhanobut:dialogplus:1.11@aar'// 对话框
 }

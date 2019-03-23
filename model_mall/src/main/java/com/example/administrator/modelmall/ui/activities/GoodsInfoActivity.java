@@ -1,7 +1,11 @@
 package com.example.administrator.modelmall.ui.activities;
 
 
+import android.view.Gravity;
 import android.view.View;
+
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,6 +16,13 @@ import com.example.administrator.modelmall.loader.ModelImageLoader;
 import com.example.administrator.modelmall.ui.customview.StatusBarUtils;
 import com.example.administrator.modelmall.ui.customview.ToastUtils;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.DialogPlusBuilder;
+import com.orhanobut.dialogplus.ListHolder;
+import com.orhanobut.dialogplus.OnClickListener;
+import com.orhanobut.dialogplus.OnItemClickListener;
+import com.orhanobut.dialogplus.ViewHolder;
+import com.orhanobut.logger.Logger;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -159,11 +170,42 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                 ToastUtils.showToast(this, "待续", ToastUtils.LENGTH_LONG);
                 break;
             case R.id.rl_select:
-                ToastUtils.showToast(this, "弹出尺寸选择菜单", ToastUtils.LENGTH_LONG);
+                showSelectDialog();
                 break;
             case R.id.rl_select_addr:
                 ToastUtils.showToast(this, "弹出地址选择菜单", ToastUtils.LENGTH_LONG);
                 break;
         }
     }
+
+    /**
+     * 简单的模拟 数据写死 不是真正的来源网络
+     * */
+    private void showSelectDialog() {
+        DialogPlus dialog = DialogPlus.newDialog(this)
+                .setContentHolder(new ViewHolder(R.layout.select_clothes_dialog))
+                .setCancelable(true)
+                .setGravity(Gravity.BOTTOM)
+                .setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(DialogPlus dialog, View view) {
+                        switch (view.getId()) {
+                            case R.id.text_color1:
+                                ToastUtils.showToast(GoodsInfoActivity.this, "测试1", ToastUtils.LENGTH_LONG);
+                                break;
+                            case R.id.text_color2:
+                                ToastUtils.showToast(GoodsInfoActivity.this, "测试2", ToastUtils.LENGTH_LONG);
+                                break;
+                            case R.id.text_color3:
+                                ToastUtils.showToast(GoodsInfoActivity.this, "测试3", ToastUtils.LENGTH_LONG);
+                                break;
+                        }
+
+                    }
+
+                })
+                .create();
+        dialog.show();
+    }
+
 }

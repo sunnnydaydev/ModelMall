@@ -1,9 +1,13 @@
 package com.example.administrator.modelmall.base.impl;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.administrator.modelmall.R;
+import com.example.administrator.modelmall.adapter.ShopCartAdapter;
 import com.example.administrator.modelmall.base.BasePage;
 import com.example.administrator.modelmall.events.GoodInfoMsg;
 import com.example.administrator.modelmall.ui.activities.MainActivity;
@@ -13,6 +17,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Create by SunnyDay on 2019/03/15
  * 购物车模块
@@ -20,7 +27,10 @@ import org.greenrobot.eventbus.ThreadMode;
 public class ShoppingPageImpl extends BasePage {
 
     private RecyclerView recyclerView;
-    public GoodInfoMsg goodInfo;
+    private ShopCartAdapter adapter;
+    private List<Integer> mList;
+    private TextView tvEmpty;
+
 
     public ShoppingPageImpl(Context context) {
         super(context);
@@ -33,19 +43,28 @@ public class ShoppingPageImpl extends BasePage {
 
     @Override
     public void init() {
-        recyclerView = view.findViewById(R.id.shop_cart);
-        recyclerView.setAdapter(null);
+        EventBus.getDefault().register(this); // 传this , 传 context 报错
+        mList = new ArrayList<>();
 
-        // 传this  传 context 报错
-        EventBus.getDefault().register(this);
+        recyclerView = view.findViewById(R.id.shop_cart);
+        tvEmpty = view.findViewById(R.id.tv_empty);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        adapter = new ShopCartAdapter(context, mList);
+        recyclerView.setAdapter(adapter);
 
 
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event(GoodInfoMsg goodInfoMsg) {
-        goodInfo = goodInfoMsg;
-        Logger.d("收到消息：通知显示商品"+goodInfoMsg.getGoodCount());
+        tvEmpty.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
+
+        Logger.d("收到消息：通知显示商品" + goodInfoMsg.getGoodCount());
+        int size = goodInfoMsg.getGoodCount();//没啥鸡用  必须写
+        mList.add(size);// 没啥鸡用   必须写
+        adapter.notifyDataSetChanged();
 
     }
 

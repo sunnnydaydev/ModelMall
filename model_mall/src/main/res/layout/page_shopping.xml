@@ -50,12 +50,26 @@
                       android:layout_alignParentEnd="true" />
             </RelativeLayout>
       </android.support.v7.widget.Toolbar>
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/shop_cart"
+      <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="0dp"
           android:layout_weight="8">
-      </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:visibility="gone"
+                android:id="@+id/shop_cart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+            <TextView
+                android:id="@+id/tv_empty"
+                android:textSize="20sp"
+                android:textColor="@color/red"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="空布局"/>
+      </RelativeLayout>
+
       <LinearLayout
           android:minHeight="50dp"
           android:layout_gravity="bottom"

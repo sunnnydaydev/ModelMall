@@ -173,9 +173,33 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                 showSelectDialog();
                 break;
             case R.id.rl_select_addr:
-                ToastUtils.showToast(this, "弹出地址选择菜单", ToastUtils.LENGTH_LONG);
+               showAddrDialog();
                 break;
         }
+    }
+
+    /**
+     * 收货地址对话框
+     * */
+    private void showAddrDialog() {
+        DialogPlus dialog = DialogPlus.newDialog(this)
+                .setContentHolder(new ViewHolder(R.layout.select_addr_dialog))
+                .setCancelable(true)
+                .setGravity(Gravity.BOTTOM)
+                .setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(DialogPlus dialog, View view) {
+                        switch (view.getId()) {
+                            case R.id.other_addr:
+                                ToastUtils.showToast(GoodsInfoActivity.this, "待续，程序员小哥生病了", ToastUtils.LENGTH_LONG);
+                                break;
+                        }
+
+                    }
+
+                })
+                .create();
+        dialog.show();
     }
 
     /**
@@ -198,6 +222,16 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                                 break;
                             case R.id.text_color3:
                                 ToastUtils.showToast(GoodsInfoActivity.this, "测试3", ToastUtils.LENGTH_LONG);
+                                break;
+                            case R.id.question:
+                                ToastUtils.showToast(GoodsInfoActivity.this, "待续", ToastUtils.LENGTH_LONG);
+                                break;
+                            case R.id.ll_easy_buy:
+                                ToastUtils.showToast(GoodsInfoActivity.this, "model支付平台还没开张！", ToastUtils.LENGTH_LONG);
+                                break;
+                            case R.id.tv_add_cart:
+                                ToastUtils.showToast(GoodsInfoActivity.this, "添加成功", ToastUtils.LENGTH_LONG);
+                                dialog.dismiss();
                                 break;
                         }
 

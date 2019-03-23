@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="配送至"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="{fa-times}"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/tv_location1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="{fa-map-marker}"
+            android:textColor="@color/red"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:layout_toRightOf="@id/tv_location1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="河南南阳市宛城区南阳理工学院-软件学院"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/red"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/tv_location2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="{fa-map-marker}"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:layout_toRightOf="@id/tv_location2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上海浦东新区川沙新镇-绿海家园"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/black"/>
+    </RelativeLayout>
+    <!-- 占位-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/white"/>
+    <TextView
+        android:id="@+id/other_addr"
+        android:background="@color/red"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="选择其他地址"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+</LinearLayout>

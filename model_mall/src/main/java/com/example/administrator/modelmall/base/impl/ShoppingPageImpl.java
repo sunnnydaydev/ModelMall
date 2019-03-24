@@ -1,10 +1,12 @@
 package com.example.administrator.modelmall.base.impl;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.administrator.modelmall.R;
@@ -30,11 +32,12 @@ public class ShoppingPageImpl extends BasePage implements View.OnClickListener {
     private RecyclerView recyclerView;
     private ShopCartAdapter adapter;
     private List<Integer> mList;
-    private TextView tvEmpty;
+    private ImageView imgRmpty;
     private TextView tvClear;//清空
     private TextView tvDel;  //删除
 
     private TextView tvSummary;//结算
+    private TextView tvTital;
 
 
     public ShoppingPageImpl(Context context) {
@@ -52,12 +55,12 @@ public class ShoppingPageImpl extends BasePage implements View.OnClickListener {
         mList = new ArrayList<>();
 
         recyclerView = view.findViewById(R.id.shop_cart);
-        tvEmpty = view.findViewById(R.id.tv_empty);
+        imgRmpty = view.findViewById(R.id.img_empty);
 
         tvClear = view.findViewById(R.id.tv_clear);
         tvDel = view.findViewById(R.id.tv_del);
         tvSummary = view.findViewById(R.id.tv_summary);
-
+        tvTital = view.findViewById(R.id.tv_tital);
 
         tvClear.setOnClickListener(this);
         tvDel.setOnClickListener(this);
@@ -70,10 +73,12 @@ public class ShoppingPageImpl extends BasePage implements View.OnClickListener {
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Event(GoodInfoMsg goodInfoMsg) {
-        tvEmpty.setVisibility(View.GONE);
+        imgRmpty.setVisibility(View.GONE);
         recyclerView.setVisibility(View.VISIBLE);
+        tvTital.setText("￥119.00");
 
         Logger.d("收到消息：通知显示商品" + goodInfoMsg.getGoodCount());
         int size = goodInfoMsg.getGoodCount();//没啥鸡用  必须写
@@ -86,13 +91,18 @@ public class ShoppingPageImpl extends BasePage implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_clear:
-                ToastUtils.showToast(context,"程序员小哥哥正在熬夜加班",ToastUtils.LENGTH_SHORT);
+                ToastUtils.showToast(context, "程序员小哥哥正在熬夜加班", ToastUtils.LENGTH_SHORT);
                 break;
             case R.id.tv_del:
-                ToastUtils.showToast(context,"程序员小哥哥正在熬夜加班",ToastUtils.LENGTH_SHORT);
+                ToastUtils.showToast(context, "程序员小哥哥正在熬夜加班", ToastUtils.LENGTH_SHORT);
                 break;
             case R.id.tv_summary:
-                ToastUtils.showToast(context,"调用支付宝",ToastUtils.LENGTH_SHORT);
+                if (recyclerView.getVisibility() == View.VISIBLE){
+                    ToastUtils.showToast(context, "调用支付宝", ToastUtils.LENGTH_SHORT);
+                }else{
+                    ToastUtils.showToast(context, "购物车为空，请先购买商品", ToastUtils.LENGTH_SHORT);
+                }
+
                 break;
         }
     }

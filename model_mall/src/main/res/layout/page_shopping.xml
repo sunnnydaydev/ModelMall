@@ -60,14 +60,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </android.support.v7.widget.RecyclerView>
-            <TextView
-                android:id="@+id/tv_empty"
+            <ImageView
+                android:background="@color/white"
+                android:id="@+id/img_empty"
                 android:textSize="20sp"
                 android:textColor="@color/red"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="空布局"
+                android:src="@drawable/kong"
                 tools:ignore="HardcodedText" />
       </RelativeLayout>
 
@@ -125,7 +126,7 @@
                       android:layout_width="0dp"
                       android:layout_height="match_parent"
                       android:layout_weight="1"
-                      android:text="￥119.00"
+                      android:text="￥0.00"
                       android:textColor="@color/red"
                       tools:ignore="HardcodedText" />
             </LinearLayout>

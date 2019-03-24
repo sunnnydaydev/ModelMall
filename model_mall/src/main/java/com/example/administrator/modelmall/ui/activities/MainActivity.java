@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.viewpager)
     public ViewPager viewPager;
     private List<BasePage> mList;
-    public GoodInfoMsg goodInfo;
+
 
     @Override
     public Object offerLayout() {
@@ -50,7 +50,6 @@ public class MainActivity extends BaseActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindView() {
-       // EventBus.getDefault().register(this);
         setImmersionStatusBar();
         handleBottomButton();
         initViewpager();
@@ -130,17 +129,11 @@ public class MainActivity extends BaseActivity {
                 .initialise();
     }
 
-//    @Subscribe(threadMode = ThreadMode.MAIN)
-//    public void Event(GoodInfoMsg goodInfoMsg) {
-//        goodInfo = goodInfoMsg;
-//        Logger.d(goodInfoMsg.getGoodCount());
-//    }
+
 
     @Override
     public void destory() {
-//        if (EventBus.getDefault().isRegistered(this)) {
-//            EventBus.getDefault().unregister(this);
-//        }
+
     }
 }
 

@@ -46,7 +46,7 @@
                       android:text="删除"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      tools:ignore="HardcodedText"
+                      tools:ignore="HardcodedText,RtlHardcoded"
                       android:layout_alignParentEnd="true" />
             </RelativeLayout>
       </android.support.v7.widget.Toolbar>
@@ -67,7 +67,8 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="空布局"/>
+                android:text="空布局"
+                tools:ignore="HardcodedText" />
       </RelativeLayout>
 
       <LinearLayout
@@ -84,11 +85,11 @@
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 android:minHeight="50dp">
-                  <com.joanzapata.iconify.widget.IconTextView
+                  <CheckBox
+                      android:id="@+id/cb_all"
                       android:layout_width="0dp"
                       android:layout_height="match_parent"
                       android:layout_weight="1"
-                      android:text="{fa-check-circle}"
                       tools:ignore="HardcodedText"
                       android:gravity="center"
                       android:textSize="20sp"
@@ -119,15 +120,17 @@
                       android:textColor="@color/gray"
                       tools:ignore="HardcodedText" />
                   <TextView
+                      android:id="@+id/tv_tital"
                       android:gravity="center|left"
                       android:layout_width="0dp"
                       android:layout_height="match_parent"
                       android:layout_weight="1"
-                      android:text="￥0.0"
+                      android:text="￥119.00"
                       android:textColor="@color/red"
                       tools:ignore="HardcodedText" />
             </LinearLayout>
             <TextView
+                android:id="@+id/tv_summary"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"

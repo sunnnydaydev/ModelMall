@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,8 @@ import java.util.List;
 public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.MyHolder> {
     private Context context;
     public List<Integer> mList;
+    public boolean isChecked;
+
 
     public ShopCartAdapter(Context context, List<Integer> mList) {
         this.context = context;
@@ -38,7 +41,7 @@ public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.MyHold
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-
+        isChecked = holder.cb_select.isChecked();
     }
 
     @Override
@@ -48,9 +51,11 @@ public class ShopCartAdapter extends RecyclerView.Adapter<ShopCartAdapter.MyHold
     }
 
     class MyHolder extends RecyclerView.ViewHolder {
+        public CheckBox cb_select;
 
         public MyHolder(View itemView) {
             super(itemView);
+            cb_select = itemView.findViewById(R.id.cb_select);
         }
     }
 }

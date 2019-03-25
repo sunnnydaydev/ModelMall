@@ -57,10 +57,35 @@ dependencies {
         transitive = true
         exclude group: 'com.android.support'
     }
-    implementation 'com.airbnb.android:lottie:2.1.0'// lottie动画
-    implementation 'com.orhanobut:dialogplus:1.11@aar'// 对话框
-    implementation 'org.greenrobot:eventbus:3.0.0'//eventBus
-    implementation 'de.hdodenhof:circleimageview:3.0.0'// 圆图片
-    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'//扫码
-    implementation 'com.carson_ho:SearchLayout:1.0.1' //搜索框
+    implementation 'com.airbnb.android:lottie:2.1.0'
+    // lottie动画
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
+    // 对话框
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    //eventBus
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    // 圆图片
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+    //扫码
+    implementation 'com.carson_ho:SearchLayout:1.0.1'
+    //搜索框
+    implementation files('libs/MobTools-2019.0306.1850.jar')
+    implementation files('libs/ShareSDK-Facebook-3.5.0.jar')
+    implementation files('libs/ShareSDK-Wechat-Moments-3.5.0.jar')
+    implementation files('libs/ShareSDK-Wechat-Core-3.5.0.jar')
+    implementation files('libs/MobCommons-2019.0306.1851.jar')
+    implementation files('libs/ShareSDK-Douban-3.5.0.jar')
+    implementation files('libs/ShareSDK-SinaWeibo-3.5.0.jar')
+    implementation files('libs/ShareSDK-QZone-3.5.0.jar')
+    implementation files('libs/ShareSDK-ShortMessage-3.5.0.jar')
+    implementation files('libs/ShareSDK-GooglePlus-3.5.0.jar')
+    implementation files('libs/ShareSDK-Wechat-3.5.0.jar')
+    implementation files('libs/ShareSDK-YouDao-3.5.0.jar')
+    implementation files('libs/ShareSDK-Youtube-3.5.0.jar')
+    implementation files('libs/ShareSDK-Wechat-Favorite-3.5.0.jar')
+    implementation files('libs/ShareSDK-Email-3.5.0.jar')
+    implementation files('libs/ShareSDK-Core-3.5.0.jar')
+    implementation files('libs/ShareSDK-Douyin-3.5.0.jar')
+    implementation files('libs/ShareSDK-QQ-3.5.0.jar')
+    implementation files('libs/ShareSDK-Twitter-3.5.0.jar')
 }

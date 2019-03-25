@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 /**
  * 商品的具体内容
@@ -140,7 +141,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_share:
-                ToastUtils.showToast(this, "待续！", ToastUtils.LENGTH_LONG);
+                share();
                 break;
             case R.id.tv_back:
                 finish();
@@ -153,7 +154,7 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                 break;
             case R.id.add_cart:
                 ToastUtils.showToast(this, "商品已经添加到购物车！", ToastUtils.LENGTH_LONG);
-                // todo 发送消息   添加了1个商品
+                // 发送消息   添加了1个商品
                 EventBus.getDefault().post(new GoodInfoMsg(1));
                 finish();
                 break;
@@ -180,6 +181,22 @@ public class GoodsInfoActivity extends BaseActivity implements View.OnClickListe
                showAddrDialog();
                 break;
         }
+    }
+
+    private void share() {
+        String url = "https://item.m.jd.com/product/33866930378.html?dl_abtest=a&ShareTm=r%2BfTj4JdAiGsT%2F%2FF5xRxTW42S7AFN9pWMeWlDY0KSiALFlTrZN5vaDIJcfXGAeJwhUokw%2FnIJ4sOBLnGdxNE9dDGgh5xsVfuC7u3jGZlkpIHdRU5Ya%2B4VA515Ip0THTnC6SizEVw2KYleFQ7ICRX1SYyuMMi03sgl3y6seo9JJY%3D&ad_od=share&utm_source=androidapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=QQfriends";
+        OnekeyShare oks = new OnekeyShare();
+        oks.disableSSOWhenAuthorize();
+        oks.setTitle("衣服");
+        oks.setTitleUrl(url);
+        oks.setText("分享给你一件衣服");
+        oks.setUrl(url);
+        oks.setComment("我是测试评论文本");
+        oks.setSite(getString(R.string.app_name));
+        oks.setSiteUrl(url);
+        oks.setImageUrl("https://m.360buyimg.com/mobilecms/s750x750_jfs/t1/24765/17/7815/269934/5c6ffc08E8a388c14/99eac8cfa6da5e82.jpg!q80.dpg.webp");
+
+        oks.show(this);
     }
 
     /**

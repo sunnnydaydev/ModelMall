@@ -35,6 +35,7 @@ public class SearchActivity extends BaseActivity {
         searchView.setOnClickSearch(new ICallBack() {
             @Override
             public void SearchAciton(String string) {
+                // 框架源码弹吐司 不友好 这里为了实现功能临时使用
                 ToastUtils.showToast(SearchActivity.this,"后台小哥的数据库正在搭建",ToastUtils.LENGTH_LONG);
             }
         });

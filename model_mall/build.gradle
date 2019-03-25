@@ -57,9 +57,10 @@ dependencies {
         transitive = true
         exclude group: 'com.android.support'
     }
-    implementation 'com.airbnb.android:lottie:2.1.0'// 动画
+    implementation 'com.airbnb.android:lottie:2.1.0'// lottie动画
     implementation 'com.orhanobut:dialogplus:1.11@aar'// 对话框
 
     implementation 'org.greenrobot:eventbus:3.0.0'//eventBus
-    implementation 'de.hdodenhof:circleimageview:3.0.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'// 圆图片
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'//扫码
 }

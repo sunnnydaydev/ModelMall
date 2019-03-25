@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activities.AboutActivity"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/orange">
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="关于我们"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            tools:ignore="HardcodedText" />
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:background="@drawable/tv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:autoLink="all"
+            android:text="本产品开发者：dev晴天"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|left"
+            android:textSize="18sp"
+            android:autoLink="all"
+            android:text="csdn：https://me.csdn.net/qq_38350635"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|left"
+            android:textSize="18sp"
+            android:autoLink="all"
+            android:text="简书：https://www.jianshu.com/u/c24128883c20"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+        <TextView
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|left"
+            android:textSize="18sp"
+            android:autoLink="all"
+            android:text="github：https://github.com/sunnnydaydev"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:text="谢谢可爱的你们下载本产品，其他用途请联系 1246771571@qq.com"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

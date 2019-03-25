@@ -2,8 +2,10 @@ package com.example.administrator.modelmall.base.impl;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
@@ -30,7 +32,11 @@ import com.example.administrator.modelmall.net.listener.DisposeDataListener;
 import com.example.administrator.modelmall.net.request.CommonRequest;
 import com.example.administrator.modelmall.net.response.CommonJsonCallback;
 
+import com.example.administrator.modelmall.ui.activities.MainActivity;
+import com.example.administrator.modelmall.ui.activities.MsgActivity;
+import com.example.administrator.modelmall.ui.activities.SearchActivity;
 import com.example.administrator.modelmall.ui.customview.ToastUtils;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.orhanobut.logger.Logger;
 
@@ -38,7 +44,7 @@ import com.orhanobut.logger.Logger;
 /**
  * Create by SunnyDay on 2019/03/15
  */
-public class MainPageImpl extends BasePage implements View.OnClickListener {
+public class MainPageImpl extends BasePage implements View.OnClickListener{
     private Activity context;
     private SwipeRefreshLayout mRefreshLayout;
     private IconTextView scan;
@@ -47,6 +53,7 @@ public class MainPageImpl extends BasePage implements View.OnClickListener {
     private FloatingActionButton recomment;
     private DelegateAdapter adapter;
     private EntityMainPage entity;
+    private AppCompatEditText etSearch;
 
     public MainPageImpl(Context context) {
         super(context);
@@ -65,10 +72,15 @@ public class MainPageImpl extends BasePage implements View.OnClickListener {
         msg = view.findViewById(R.id.tv_msg);
         recyclerView = view.findViewById(R.id.recycler_view);
         recomment = view.findViewById(R.id.recomment);
+        etSearch = view.findViewById(R.id.et_search);
 
         initRefreshLayout();
         getDataFromSever();
+
         recomment.setOnClickListener(this);
+        msg.setOnClickListener(this);
+        scan.setOnClickListener(this);
+        etSearch.setOnClickListener(this);
 
     }
 
@@ -187,15 +199,41 @@ public class MainPageImpl extends BasePage implements View.OnClickListener {
 
     /**
      * 各种点击事件处理
-     * */
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.recomment:
-                    ToastUtils.showToast(context, "推荐成功，请继续往下浏览", ToastUtils.LENGTH_LONG);
-                    recommentData(adapter, entity);
-                    adapter.notifyDataSetChanged();
+                ToastUtils.showToast(context, "推荐成功，请继续往下浏览", ToastUtils.LENGTH_LONG);
+                recommentData(adapter, entity);
+                adapter.notifyDataSetChanged();
+                break;
+            case R.id.tv_msg:
+                context.startActivity(new Intent(context, MsgActivity.class));
+                break;
+            case R.id.tv_scan:
+                scan_code();
+                break;
+            case R.id.et_search:
+                context.startActivity(new Intent(context, SearchActivity.class));
                 break;
         }
     }
+
+    /**
+     * 扫码
+     * <p>
+     * 结果见activity回调
+     */
+    private void scan_code() {
+        IntentIntegrator integrator = new IntentIntegrator(context);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrator.setPrompt("Model Scanner");
+        integrator.setCameraId(0);
+        integrator.setBeepEnabled(true);
+        integrator.setBarcodeImageEnabled(false);
+        integrator.initiateScan();
+
+    }
+
 }

@@ -156,6 +156,7 @@
        </LinearLayout>
    </LinearLayout>
     <RelativeLayout
+        android:id="@+id/rl_goods_addr"
         android:background="@color/white"
         android:padding="10dp"
         android:layout_marginTop="25dp"
@@ -179,6 +180,7 @@
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/rl_setting"
         android:background="@color/white"
         android:padding="10dp"
         android:layout_marginTop="10dp"
@@ -188,7 +190,7 @@
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="系统设置"
+            android:text="关于"
             android:textSize="18sp"
             tools:ignore="HardcodedText" />
         <TextView

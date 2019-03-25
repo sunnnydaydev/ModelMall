@@ -1,9 +1,11 @@
 package com.example.administrator.modelmall.ui.activities;
 
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -21,6 +23,9 @@ import com.example.administrator.modelmall.net.listener.DisposeDataHandle;
 import com.example.administrator.modelmall.net.listener.DisposeDataListener;
 import com.example.administrator.modelmall.net.request.CommonRequest;
 import com.example.administrator.modelmall.net.response.CommonJsonCallback;
+import com.example.administrator.modelmall.ui.customview.ToastUtils;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.orhanobut.logger.Logger;
 
 import org.greenrobot.eventbus.EventBus;
@@ -134,6 +139,25 @@ public class MainActivity extends BaseActivity {
     @Override
     public void destory() {
 
+    }
+
+
+    /**
+     * 扫码回调
+     *
+     * */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null) {
+            if(result.getContents() == null) {
+                ToastUtils.showToast(this,"ModelMall：您取消了扫码",ToastUtils.LENGTH_LONG);
+            } else {
+                ToastUtils.showToast(this, "ModelMall:扫码结果" + result.getContents(), ToastUtils.LENGTH_LONG);
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }
 

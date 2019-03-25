@@ -32,6 +32,8 @@
                     tools:ignore="HardcodedText" />
 
                 <android.support.v7.widget.AppCompatEditText
+                    android:focusable="false"
+                    android:id="@+id/et_search"
                     android:background="@color/white"
                     android:layout_gravity="center"
                     android:textColorHint="@color/gray"

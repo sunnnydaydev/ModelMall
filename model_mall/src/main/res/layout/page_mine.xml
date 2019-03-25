@@ -1,22 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-      <android.support.v7.widget.Toolbar
-          android:layout_width="match_parent"
-          android:layout_height="80dp"
-          android:background="@color/orange">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--  模拟就不使用 滑动效果了-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/orange"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/user_head" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="dev晴天"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_my_goods"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="我的订单"
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp">
             <TextView
-                android:gravity="center"
                 android:layout_marginRight="10dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:text="我的"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="全部订单"
                 tools:ignore="HardcodedText"
                 android:layout_marginEnd="10dp" />
-      </android.support.v7.widget.Toolbar>
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=">"
+                tools:ignore="HardcodedText"
+                android:layout_marginEnd="10dp" />
+        </LinearLayout>
+    </RelativeLayout>
+   <LinearLayout
+       android:background="@color/white"
+       android:layout_width="match_parent"
+       android:layout_height="70dp"
+       android:orientation="horizontal">
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <com.joanzapata.iconify.widget.IconTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="{fa-credit-card}"
+                tools:ignore="HardcodedText"
+                android:textSize="15sp"/>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="待付款"
+                tools:ignore="HardcodedText"
+                android:textSize="15sp"/>
+        </LinearLayout>
+       <LinearLayout
+           android:gravity="center"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:orientation="vertical">
+           <com.joanzapata.iconify.widget.IconTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="{fa-truck}"
+               tools:ignore="HardcodedText"
+               android:textSize="15sp"/>
+           <TextView
+               android:layout_marginTop="10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="待收货"
+               tools:ignore="HardcodedText"
+               android:textSize="15sp"/>
+       </LinearLayout>
+       <LinearLayout
+           android:gravity="center"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:orientation="vertical">
+           <com.joanzapata.iconify.widget.IconTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="{fa-commenting-o }"
+               tools:ignore="HardcodedText"
+               android:textSize="15sp"/>
+           <TextView
+               android:layout_marginTop="10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="待评价"
+               tools:ignore="HardcodedText"
+               android:textSize="15sp"/>
+       </LinearLayout>
+       <LinearLayout
+           android:gravity="center"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:orientation="vertical">
+           <com.joanzapata.iconify.widget.IconTextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="{fa-server}"
+               tools:ignore="HardcodedText"
+               android:textSize="15sp"/>
+           <TextView
+               android:layout_marginTop="10dp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="售后"
+               tools:ignore="HardcodedText"
+               android:textSize="15sp"/>
+       </LinearLayout>
+   </LinearLayout>
+    <RelativeLayout
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收货地址"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=">"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="系统设置"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=">"
+            android:textSize="18sp"
+            tools:ignore="HardcodedText"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 </android.support.v7.widget.LinearLayoutCompat>

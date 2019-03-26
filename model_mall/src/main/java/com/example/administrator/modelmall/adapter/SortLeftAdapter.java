@@ -1,5 +1,6 @@
 package com.example.administrator.modelmall.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +12,8 @@ import android.widget.TextView;
 
 import com.example.administrator.modelmall.R;
 import com.example.administrator.modelmall.ui.customview.ToastUtils;
-import com.orhanobut.logger.Logger;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * Create by SunnyDay on 2019/03/26
@@ -30,12 +32,16 @@ public class SortLeftAdapter extends RecyclerView.Adapter<SortLeftAdapter.MyView
         return new MyViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
+        holder.tvSort.setText("商品类别" + position);
         holder.rlLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToastUtils.showToast(context,"点击"+position,ToastUtils.LENGTH_LONG);
+                // ToastUtils.showToast(context,"点击"+position,ToastUtils.LENGTH_LONG);
+                //  发送通知更新消息
+                EventBus.getDefault().post("update");
             }
         });
 
@@ -49,13 +55,11 @@ public class SortLeftAdapter extends RecyclerView.Adapter<SortLeftAdapter.MyView
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvBar;
         TextView tvSort;
         RelativeLayout rlLayout;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            tvBar = itemView.findViewById(R.id.tv_bar);
             tvSort = itemView.findViewById(R.id.tv_sort);
             rlLayout = itemView.findViewById(R.id.rl_layout);
         }

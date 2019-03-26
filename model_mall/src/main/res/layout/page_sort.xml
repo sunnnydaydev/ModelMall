@@ -1,38 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-      <android.support.v7.widget.Toolbar
-          android:layout_width="match_parent"
-          android:layout_height="80dp"
-          android:background="@color/orange">
-            <TextView
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:text="分类"
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/orange">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="分类"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- 宽比例 1 -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_left"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+        <!-- 宽比例 3 -->
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/wheel_right"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="HardcodedText,RtlHardcoded" />
-      </android.support.v7.widget.Toolbar>
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="horizontal">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_left"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <TextView
-                android:background="@color/white"
-                android:id="@+id/wheel_right"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"/>
-      </LinearLayout>
+                android:background="@color/white" >
 
+                <!--  各种图片 写死拼凑的数据  为了方便毕设而写 实际项目中 rv+fragment 打造-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp">
+                    <ImageView
+                        android:scaleType="fitXY"
+                        android:id="@+id/img_sort"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/big1"/>
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:visibility="gone"
+                        android:id="@+id/lav_loading"
+                        app:lottie_fileName="loading.json"
+                        app:lottie_autoPlay="false"
+                        android:layout_marginTop="200dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_recomment"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:text="专场推荐"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:ignore="HardcodedText" />
+                    <LinearLayout
+                        android:padding="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:src="@drawable/small1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                        <ImageView
+                            android:src="@drawable/small2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                        <ImageView
+                            android:src="@drawable/small3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_hot_sort"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:text="热门分类"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:ignore="HardcodedText" />
+                    <LinearLayout
+                        android:padding="30dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:src="@drawable/img_small"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                        <ImageView
+                            android:src="@drawable/img_small"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                        <ImageView
+                            android:src="@drawable/img_small"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+
+
+    </LinearLayout>
 </android.support.v7.widget.LinearLayoutCompat>

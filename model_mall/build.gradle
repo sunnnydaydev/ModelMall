@@ -32,23 +32,15 @@ dependencies {
     // 黄油刀
     implementation 'com.jakewharton:butterknife:8.8.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.0'
-    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'
-    // 底部导航
-    implementation 'com.squareup.okhttp3:okhttp:3.4.1'
-    // okhttp
-    implementation 'com.google.code.gson:gson:2.6.2'
-    //Gson 库
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    //cardview
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    //recyclerview
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    //glide
-    implementation 'com.youth.banner:banner:1.4.10'
-    //banner 轮播
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:2.1.0'// 底部导航
+    implementation 'com.squareup.okhttp3:okhttp:3.4.1' // okhttp
+    implementation 'com.google.code.gson:gson:2.6.2'  //Gson 库
+    implementation 'com.android.support:cardview-v7:27.1.1' //cardview
+    implementation 'com.android.support:recyclerview-v7:27.1.1' //recyclerview
+    implementation 'com.github.bumptech.glide:glide:4.9.0' //glide
+    implementation 'com.youth.banner:banner:1.4.10'  //banner 轮播
     implementation 'com.android.support:design:27.1.1'
-    // litepal数据库
-    implementation 'org.litepal.android:core:1.4.1'
+    implementation 'org.litepal.android:core:1.4.1' // litepal数据库
     //字体图标库
     implementation 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
     implementation 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
@@ -57,18 +49,15 @@ dependencies {
         transitive = true
         exclude group: 'com.android.support'
     }
-    implementation 'com.airbnb.android:lottie:2.1.0'
-    // lottie动画
-    implementation 'com.orhanobut:dialogplus:1.11@aar'
-    // 对话框
-    implementation 'org.greenrobot:eventbus:3.0.0'
-    //eventBus
-    implementation 'de.hdodenhof:circleimageview:3.0.0'
-    // 圆图片
-    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
-    //扫码
-    implementation 'com.carson_ho:SearchLayout:1.0.1'
-    //搜索框
+    implementation 'com.airbnb.android:lottie:2.1.0' // lottie动画
+    implementation 'com.orhanobut:dialogplus:1.11@aar' // 对话框
+    implementation 'org.greenrobot:eventbus:3.0.0' //eventBus
+    implementation 'de.hdodenhof:circleimageview:3.0.0' // 圆图片
+    implementation 'com.journeyapps:zxing-android-embedded:3.6.0'   //扫码
+    implementation 'com.carson_ho:SearchLayout:1.0.1'  //搜索框
+     //轮子
+
+    // sharesdk 参考libs
     implementation files('libs/MobTools-2019.0306.1850.jar')
     implementation files('libs/ShareSDK-Facebook-3.5.0.jar')
     implementation files('libs/ShareSDK-Wechat-Moments-3.5.0.jar')

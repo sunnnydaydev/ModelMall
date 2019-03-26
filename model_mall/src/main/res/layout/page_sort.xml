@@ -3,20 +3,36 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
       <android.support.v7.widget.Toolbar
           android:layout_width="match_parent"
           android:layout_height="80dp"
           android:background="@color/orange">
             <TextView
                 android:gravity="center"
-                android:layout_marginRight="10dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:text="分类"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:ignore="HardcodedText"
-                android:layout_marginEnd="10dp" />
+                tools:ignore="HardcodedText,RtlHardcoded" />
       </android.support.v7.widget.Toolbar>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:background="@color/white"
+                android:id="@+id/wheel_right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"/>
+      </LinearLayout>
+
 </android.support.v7.widget.LinearLayoutCompat>

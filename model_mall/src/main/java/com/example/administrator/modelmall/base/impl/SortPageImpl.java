@@ -73,20 +73,24 @@ public class SortPageImpl extends BasePage implements View.OnClickListener {
                 llHotSort.setVisibility(View.GONE);
                 llRecomment.setVisibility(View.GONE);
             }
+
             @Override
             public void onAnimationEnd(Animator animator) {
                 lavLoading.setVisibility(View.GONE);
                 imgSort.setVisibility(View.VISIBLE);
                 llHotSort.setVisibility(View.VISIBLE);
                 llRecomment.setVisibility(View.VISIBLE);
-                ToastUtils.showToast(context,"数据更新完毕",ToastUtils.LENGTH_LONG);
+                ToastUtils.showToast(context, "数据更新完毕", ToastUtils.LENGTH_LONG);
             }
 
             @Override
-            public void onAnimationCancel(Animator animator) {}
+            public void onAnimationCancel(Animator animator) {
+            }
 
             @Override
-            public void onAnimationRepeat(Animator animator) {}});
+            public void onAnimationRepeat(Animator animator) {
+            }
+        });
 
     }
 

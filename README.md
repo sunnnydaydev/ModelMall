@@ -24,7 +24,7 @@
 > [ModelMall](https://github.com/sunnnydaydev/ModelMall)
 
 ###### 3 apk 传送门
-> [apk下载](https://github.com/sunnnydaydev/ModelMall/blob/master/model_mall/src/main/java/com/example/administrator/modelmall/apk/model_mall-debug.apk)
+> apk下载（动手编译一遍吧！！！！）
 
 ###### 4 主要功能
  - 登录 

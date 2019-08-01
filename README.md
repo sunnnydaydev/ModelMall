@@ -44,10 +44,6 @@
 项目采用原生mvc架构，并没采用模块化，mvp，mvvm等。架构方面优点low，但是我们模仿电商功能不是很完善，mvc就够了。以后再做重构优化。磕磕绊绊的写完了，总体来说感觉收获颇多。
 
 
-###### The end
-
-(欢迎骚扰csdn)[https://blog.csdn.net/qq_38350635]
-
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20190326210819796.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM4MzUwNjM1,size_16,color_FFFFFF,t_70)
 
